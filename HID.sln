@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.757
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HID", "HID\HID.csproj", "{D600E4FE-0D94-4F44-BA56-BAB743BB43A5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HID_PDF", "HID_PDF\HID_PDF.csproj", "{E3E93551-6F2B-4644-B040-A2A0CB3FFA02}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D600E4FE-0D94-4F44-BA56-BAB743BB43A5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D600E4FE-0D94-4F44-BA56-BAB743BB43A5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D600E4FE-0D94-4F44-BA56-BAB743BB43A5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D600E4FE-0D94-4F44-BA56-BAB743BB43A5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E3E93551-6F2B-4644-B040-A2A0CB3FFA02}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E3E93551-6F2B-4644-B040-A2A0CB3FFA02}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E3E93551-6F2B-4644-B040-A2A0CB3FFA02}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E3E93551-6F2B-4644-B040-A2A0CB3FFA02}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D4C646C8-5AF5-4D1F-B1BF-54697DA6F248}
+	EndGlobalSection
+EndGlobal
