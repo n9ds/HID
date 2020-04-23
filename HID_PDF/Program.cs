@@ -14,6 +14,7 @@ namespace HID_PDF
         [STAThread]
         static void Main()
         {
+            // I've added a comment that needs to be committed.
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Form1());

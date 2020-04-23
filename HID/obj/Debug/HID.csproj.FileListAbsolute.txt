@@ -1,0 +1,15 @@
+C:\Users\Duston\Source\Repos\HID\HID\bin\Debug\HID.exe.config
+C:\Users\Duston\Source\Repos\HID\HID\bin\Debug\HID.exe.manifest
+C:\Users\Duston\Source\Repos\HID\HID\bin\Debug\HID.application
+C:\Users\Duston\Source\Repos\HID\HID\bin\Debug\HID.exe
+C:\Users\Duston\Source\Repos\HID\HID\bin\Debug\HID.pdb
+C:\Users\Duston\Source\Repos\HID\HID\bin\Debug\HidSharp.dll
+C:\Users\Duston\Source\Repos\HID\HID\bin\Debug\HidSharp.pdb
+C:\Users\Duston\Source\Repos\HID\HID\bin\Debug\HidSharp.xml
+C:\Users\Duston\Source\Repos\HID\HID\obj\Debug\HID.csprojAssemblyReference.cache
+C:\Users\Duston\Source\Repos\HID\HID\obj\Debug\HID.csproj.CoreCompileInputs.cache
+C:\Users\Duston\Source\Repos\HID\HID\obj\Debug\HID.exe.manifest
+C:\Users\Duston\Source\Repos\HID\HID\obj\Debug\HID.application
+C:\Users\Duston\Source\Repos\HID\HID\obj\Debug\HID.csproj.CopyComplete
+C:\Users\Duston\Source\Repos\HID\HID\obj\Debug\HID.exe
+C:\Users\Duston\Source\Repos\HID\HID\obj\Debug\HID.pdb
