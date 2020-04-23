@@ -8,7 +8,8 @@ namespace HID_PDF
 {
     interface IInputMonitor
     {
-        void Setup(String DeviceName);
+        void Config();
+        void Setup();
         void Read();
     }
 }
