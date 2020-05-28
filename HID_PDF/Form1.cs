@@ -9,6 +9,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using HID_PDF.Properties;
+using HID_PDF.Forms;
 
 namespace HID_PDF
 {
@@ -79,14 +80,15 @@ namespace HID_PDF
                 dlg.ShowDialog();
                 if (dlg.FileName != null)
                 {
+                    OpenPDF(dlg.FileName);
                     // use the LoadFile(ByVal fileName As String) function for open the pdf in control  
-                    axAcroPDF1.LoadFile(dlg.FileName);
-                    axAcroPDF1.setShowToolbar(false);
-                    axAcroPDF1.setPageMode("None");
-                    axAcroPDF1.setView("Fit");
-                    this.Text = dlg.FileName;
-                    DeviceThread = new Thread(new ThreadStart(FootPedalMonitor.Read));
-                    DeviceThread.Start();
+                    //axAcroPDF1.LoadFile(dlg.FileName);
+                    //axAcroPDF1.setShowToolbar(false);
+                    //axAcroPDF1.setPageMode("None");
+                    //axAcroPDF1.setView("Fit");
+                    //this.Text = dlg.FileName;
+                    //DeviceThread = new Thread(new ThreadStart(FootPedalMonitor.Read));
+                    //DeviceThread.Start();
 
                 }
             }
@@ -166,24 +168,6 @@ namespace HID_PDF
 
         }
 
-        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            Settings.Default.WindowLocation = this.Location;
-            FootPedalMonitor.HIDStreamOpen = false;
-            // Copy window size to app settings
-            if (this.WindowState == FormWindowState.Normal)
-            {
-                Settings.Default.WindowSize = this.Size;
-            }
-            else
-            {
-                Settings.Default.WindowSize = this.RestoreBounds.Size;
-            }
-
-            // Save settings
-            Settings.Default.Save();
-        }
-
         private void HelpAbout_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
             Form dlg = new HelpAbout();
@@ -203,14 +187,8 @@ namespace HID_PDF
             }
         }
 
-        private void FileExit(object sender, EventArgs e)
-        {
-            DeviceThread.Abort();
-            this.Close();
-        }
-
         public void HidDeviceRead(object sender, HIDEventArgs e)
-        {
+         {
             if (!axAcroPDF1.IsDisposed)
             {
                 switch (e.Message)
@@ -261,6 +239,81 @@ namespace HID_PDF
                     default: throw (new NotSupportedException("Message " + e.Message + " not supported."));
                 }
             }
+        }
+
+        private void Dlg_SongSelected(object sender, SongSelectedEventArgs e)
+        {
+            switch (e.Mode)
+            {
+                case (int)HID_PDF.Forms.SongSelect.Modes.Open:
+                    if (System.IO.File.Exists(e.Filename))
+                    {
+                        OpenPDF(e.Filename);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Error: " + e.Filename + " not found", "File error", MessageBoxButtons.RetryCancel);
+                    }
+                    break;
+
+                case (int)HID_PDF.Forms.SongSelect.Modes.Delete:
+                    MessageBox.Show("You want to delete " + e.Filename);
+                    break;
+
+                default:
+                    MessageBox.Show("Unsupported Song Mode");
+                    break;
+            }
+        }
+
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Settings.Default.WindowLocation = this.Location;
+            FootPedalMonitor.HIDStreamOpen = false;
+            // Copy window size to app settings
+            if (this.WindowState == FormWindowState.Normal)
+            {
+                Settings.Default.WindowSize = this.Size;
+            }
+            else
+            {
+                Settings.Default.WindowSize = this.RestoreBounds.Size;
+            }
+            // Save settings
+            Settings.Default.Save();
+        }
+
+        private void FileExit(object sender, EventArgs e)
+        {
+            if (DeviceThread != null)
+            {
+                DeviceThread.Abort();
+            }
+            this.Close();
+        }
+
+        private void SongSelect(object sender, EventArgs e)
+        {
+            SongSelect dlg = new SongSelect();
+            dlg.SongSelected += new EventHandler<SongSelectedEventArgs>(Dlg_SongSelected);
+            dlg.Show();
+        }
+        private void OpenPDF (String Filename)
+        {
+            axAcroPDF1.LoadFile(Filename);
+            axAcroPDF1.setShowToolbar(false);
+            axAcroPDF1.setPageMode("None");
+            axAcroPDF1.setView("Fit");
+            this.Text = Filename;
+            DeviceThread = new Thread(new ThreadStart(FootPedalMonitor.Read));
+            DeviceThread.Start();
+        }
+
+        private void OpenSongsDialog(object sender, EventArgs e)
+        {
+            SongSelect dlg = new SongSelect();
+            dlg.SongSelected += new EventHandler<SongSelectedEventArgs>(Dlg_SongSelected);
+            dlg.Show();
         }
     }
 }

@@ -1,11 +1,17 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.28307.757
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30011.22
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HID", "HID\HID.csproj", "{D600E4FE-0D94-4F44-BA56-BAB743BB43A5}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HID_PDF", "HID_PDF\HID_PDF.csproj", "{E3E93551-6F2B-4644-B040-A2A0CB3FFA02}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HID_PDF.Domain", "HID_PDF2.Domain\HID_PDF.Domain.csproj", "{48A43536-124E-45C5-A4A9-2DDEBC349F50}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HID_PDF.Forms", "HID_PDF.Forms\HID_PDF.Forms.csproj", "{3E1F8641-381F-4DC6-8A49-4565AAB753F3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HID_PDF.Data", "ClassLibrary1\HID_PDF.Data.csproj", "{576590EC-07F8-434E-8478-5B619BEA97AF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +27,18 @@ Global
 		{E3E93551-6F2B-4644-B040-A2A0CB3FFA02}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E3E93551-6F2B-4644-B040-A2A0CB3FFA02}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E3E93551-6F2B-4644-B040-A2A0CB3FFA02}.Release|Any CPU.Build.0 = Release|Any CPU
+		{48A43536-124E-45C5-A4A9-2DDEBC349F50}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{48A43536-124E-45C5-A4A9-2DDEBC349F50}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{48A43536-124E-45C5-A4A9-2DDEBC349F50}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{48A43536-124E-45C5-A4A9-2DDEBC349F50}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3E1F8641-381F-4DC6-8A49-4565AAB753F3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3E1F8641-381F-4DC6-8A49-4565AAB753F3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3E1F8641-381F-4DC6-8A49-4565AAB753F3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3E1F8641-381F-4DC6-8A49-4565AAB753F3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{576590EC-07F8-434E-8478-5B619BEA97AF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{576590EC-07F8-434E-8478-5B619BEA97AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{576590EC-07F8-434E-8478-5B619BEA97AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{576590EC-07F8-434E-8478-5B619BEA97AF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

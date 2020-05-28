@@ -101,7 +101,8 @@ namespace HID_PDF
                 }
                 catch (TimeoutException t)
                 {
-                    Console.WriteLine("Timeout: " + t.Message);
+                    // Console.WriteLine("Timeout: " + t.Message);
+                    Console.WriteLine("*");
                 }
             }
         }

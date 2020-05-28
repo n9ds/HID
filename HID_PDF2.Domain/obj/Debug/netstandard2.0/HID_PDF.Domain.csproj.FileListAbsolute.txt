@@ -1,0 +1,9 @@
+C:\Users\Duston\source\repos\HID\HID_PDF2.Domain\bin\Debug\netstandard2.0\HID_PDF.Domain.deps.json
+C:\Users\Duston\source\repos\HID\HID_PDF2.Domain\bin\Debug\netstandard2.0\HID_PDF.Domain.dll
+C:\Users\Duston\source\repos\HID\HID_PDF2.Domain\bin\Debug\netstandard2.0\HID_PDF.Domain.pdb
+C:\Users\Duston\source\repos\HID\HID_PDF2.Domain\obj\Debug\netstandard2.0\HID_PDF.Domain.csprojAssemblyReference.cache
+C:\Users\Duston\source\repos\HID\HID_PDF2.Domain\obj\Debug\netstandard2.0\HID_PDF.Domain.csproj.CoreCompileInputs.cache
+C:\Users\Duston\source\repos\HID\HID_PDF2.Domain\obj\Debug\netstandard2.0\HID_PDF.Domain.AssemblyInfoInputs.cache
+C:\Users\Duston\source\repos\HID\HID_PDF2.Domain\obj\Debug\netstandard2.0\HID_PDF.Domain.AssemblyInfo.cs
+C:\Users\Duston\source\repos\HID\HID_PDF2.Domain\obj\Debug\netstandard2.0\HID_PDF.Domain.dll
+C:\Users\Duston\source\repos\HID\HID_PDF2.Domain\obj\Debug\netstandard2.0\HID_PDF.Domain.pdb
