@@ -114,4 +114,8 @@ C:\Users\Duston\source\repos\HID\HID_PDF.Forms\bin\Debug\EntityFramework.SqlServ
 C:\Users\Duston\source\repos\HID\HID_PDF.Forms\bin\Debug\EntityFramework.SqlServer.xml
 C:\Users\Duston\Source\Repos\HID\HID_PDF.Forms\obj\Debug\HID_PDF.Forms.SongSelect.resources
 C:\Users\Duston\source\repos\HID\HID_PDF.Forms\obj\Debug\HID_PDF.Forms.Properties.Resources.resources
-C:\Users\Duston\source\repos\HID\HID_PDF.Forms\obj\Debug\HID_PDF.Forms.SongCreateEditDelete.resources
+C:\Users\Duston\source\repos\HID\HID_PDF.Forms\obj\Debug\HID_PDF.Forms.LibrarySelect.resources
+C:\Users\Duston\source\repos\HID\HID_PDF.Forms\obj\Debug\HID_PDF.Forms.LibraryMaintenance.resources
+C:\Users\Duston\source\repos\HID\HID_PDF.Forms\obj\Debug\HID_PDF.Forms.SongMaintenance.resources
+C:\Users\Duston\source\repos\HID\HID_PDF.Forms\obj\Debug\HID_PDF.Forms.SetlistMaintenance.resources
+C:\Users\Duston\source\repos\HID\HID_PDF.Forms\obj\Debug\HID_PDF.Forms.SetlistSelect.resources

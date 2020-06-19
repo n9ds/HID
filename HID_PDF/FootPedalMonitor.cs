@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Windows.Forms;
 using System.Xml;
 using HidSharp;
 
@@ -89,7 +90,9 @@ namespace HID_PDF
 
         public void Read()
         {
+#pragma warning disable IDE0059 // Unnecessary assignment of a value
             byte[] mouseBuffer = new byte[128];
+#pragma warning restore IDE0059 // Unnecessary assignment of a value
             while (HIDStreamOpen)
             {
                 try
@@ -99,10 +102,16 @@ namespace HID_PDF
                     Console.WriteLine("What was read: " + whatRead);
                     SendMessage(whatRead);
                 }
+#pragma warning disable CS0168 // Variable is declared but never used
                 catch (TimeoutException t)
+#pragma warning restore CS0168 // Variable is declared but never used
                 {
-                    // Console.WriteLine("Timeout: " + t.Message);
+                    // Console.WriteLine("Timeout: " + t.Message);                   
                     Console.WriteLine("*");
+                }
+                catch(Exception e)
+                {
+                    MessageBox.Show("Error: " + e.Message);
                 }
             }
         }
@@ -111,8 +120,7 @@ namespace HID_PDF
         {
             Console.WriteLine("(Test) What was read: " + message);
             // Call the callback function
-            String eventMessage;
-            if (MessageTable.TryGetValue(message, out eventMessage))
+            if (MessageTable.TryGetValue(message, out String eventMessage))
             {
                 // Send the message here. 
                 OnHidDeviceRead(this, new HIDEventArgs(eventMessage));

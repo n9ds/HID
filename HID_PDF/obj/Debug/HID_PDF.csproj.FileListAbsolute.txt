@@ -152,3 +152,4 @@ C:\Users\Duston\Source\Repos\HID\HID_PDF\bin\Debug\ClassLibrary1.dll
 C:\Users\Duston\Source\Repos\HID\HID_PDF\bin\Debug\ClassLibrary1.pdb
 C:\Users\Duston\Source\Repos\HID\HID_PDF\bin\Debug\ClassLibrary1.dll.config
 C:\Users\Duston\Source\Repos\HID\HID_PDF\bin\Debug\HID_PDF.Forms.dll.config
+C:\Users\Duston\source\repos\HID\HID_PDF\obj\Debug\HID_PDF.Migrations.AddManytoMany.resources

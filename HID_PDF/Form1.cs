@@ -74,22 +74,13 @@ namespace HID_PDF
         {
             // Create object of Open file dialog class  
             {
-                OpenFileDialog dlg = new OpenFileDialog();
+                var dlg = new OpenFileDialog();
                 // set file filter of dialog   
                 dlg.Filter = "pdf files (*.pdf) |*.pdf;";
                 dlg.ShowDialog();
                 if (dlg.FileName != null)
                 {
                     OpenPDF(dlg.FileName);
-                    // use the LoadFile(ByVal fileName As String) function for open the pdf in control  
-                    //axAcroPDF1.LoadFile(dlg.FileName);
-                    //axAcroPDF1.setShowToolbar(false);
-                    //axAcroPDF1.setPageMode("None");
-                    //axAcroPDF1.setView("Fit");
-                    //this.Text = dlg.FileName;
-                    //DeviceThread = new Thread(new ThreadStart(FootPedalMonitor.Read));
-                    //DeviceThread.Start();
-
                 }
             }
         }
@@ -118,16 +109,6 @@ namespace HID_PDF
         private void ResizePDF(object sender, EventArgs e)
         {
             RedrawChildren(sender, e);
-            //Control control = (Control)sender;
-            //this.SuspendLayout();
-            //Size pdfSize = new Size(control.Width, control.Height - 100);
-            //axAcroPDF1.ClientSize = pdfSize;
-            //axAcroPDF1.setPageMode("PDUseNone");
-            //Control parent = control.GetControl("NextButton");
-            //int buttonHeight = this.prevButton.Height;
-            //this.prevButton.Location = new System.Drawing.Point(267, control.Height - 100);
-            //this.nextButton.Location = new System.Drawing.Point(361, control.Height - 100);
-            //this.ResumeLayout(false);
         }
 
         private void RedrawChildren(object sender, EventArgs e)
@@ -170,7 +151,7 @@ namespace HID_PDF
 
         private void HelpAbout_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
-            Form dlg = new HelpAbout();
+            var dlg = new HelpAbout();
             dlg.Show();
         }
 
@@ -180,7 +161,7 @@ namespace HID_PDF
             var rc = dlg.ShowDialog();
             if (rc == DialogResult.OK)
             {
-                DeviceConfigParams deviceConfigParams = new DeviceConfigParams();
+                var deviceConfigParams = new DeviceConfigParams();
                 deviceConfigParams.ConfigFile = Properties.Settings.Default.ConfigFile;
                 deviceConfigParams.DeviceName = dlg.SelectedDevice;
                 InitializeDevice(deviceConfigParams);
@@ -266,6 +247,20 @@ namespace HID_PDF
             }
         }
 
+        private void Dlg_LibrarySelected(object sender, LibrarySelectedEventArgs e)
+        {
+            SongSelect dlg = new SongSelect(e.LibraryId);
+            dlg.SongSelected += new EventHandler<SongSelectedEventArgs>(Dlg_SongSelected);
+            dlg.Show();
+        }
+
+        private void Dlg_SetlistSelected(object sender, SetlistSelectedEventArgs e)
+        {
+            SongSelect dlg = new SongSelect(e.SetlistId);
+            dlg.SongSelected += new EventHandler<SongSelectedEventArgs>(Dlg_SongSelected);
+            dlg.Show();
+        }
+
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
             Settings.Default.WindowLocation = this.Location;
@@ -298,6 +293,14 @@ namespace HID_PDF
             dlg.SongSelected += new EventHandler<SongSelectedEventArgs>(Dlg_SongSelected);
             dlg.Show();
         }
+
+        private void LibrarySelect (object sender, EventArgs e)
+        {
+            LibrarySelect dlg = new LibrarySelect();
+            dlg.LibrarySelected += new EventHandler<LibrarySelectedEventArgs>(Dlg_LibrarySelected);
+            dlg.Show();
+        }
+
         private void OpenPDF (String Filename)
         {
             axAcroPDF1.LoadFile(Filename);
@@ -313,6 +316,20 @@ namespace HID_PDF
         {
             SongSelect dlg = new SongSelect();
             dlg.SongSelected += new EventHandler<SongSelectedEventArgs>(Dlg_SongSelected);
+            dlg.Show();
+        }
+
+        private void OpenLibrariesDialog(object sender, EventArgs e)
+        {
+            LibrarySelect dlg = new LibrarySelect();
+            dlg.LibrarySelected += new EventHandler<LibrarySelectedEventArgs>(Dlg_LibrarySelected);
+            dlg.Show();
+        }
+
+        private void OpenSetlistsDialog(object sender, EventArgs e)
+        {
+            SetlistSelect dlg = new SetlistSelect();
+            dlg.SetlistSelected += new EventHandler<SetlistSelectedEventArgs>(Dlg_SetlistSelected);
             dlg.Show();
         }
     }

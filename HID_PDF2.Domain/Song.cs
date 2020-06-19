@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace HID_PDF.Domain
 {
@@ -13,5 +14,6 @@ namespace HID_PDF.Domain
         public String FirstNote { get; set; }
         public String Filepath { get; set; }
         public String Filetype { get; set; }
+        public virtual ICollection<Library> Libraries { get; set; }
     }
 }

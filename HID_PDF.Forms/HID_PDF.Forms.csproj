@@ -54,17 +54,45 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ListViewGroupComparer.cs" />
+    <Compile Include="ListViewItemComparer.cs" />
+    <Compile Include="SetlistItemComparer.cs" />
+    <Compile Include="SetlistMaintenance.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SetlistMaintenance.Designer.cs">
+      <DependentUpon>SetlistMaintenance.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SetlistSelectedEventArgs.cs" />
+    <Compile Include="SetlistSelect.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SetlistSelect.Designer.cs">
+      <DependentUpon>SetlistSelect.cs</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="SongCreateEditDelete.cs">
+    <Compile Include="LibraryMaintenance.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="SongCreateEditDelete.Designer.cs">
-      <DependentUpon>SongCreateEditDelete.cs</DependentUpon>
+    <Compile Include="LibraryMaintenance.Designer.cs">
+      <DependentUpon>LibraryMaintenance.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SongMaintenance.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SongMaintenance.Designer.cs">
+      <DependentUpon>SongMaintenance.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LibrarySelect.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LibrarySelect.Designer.cs">
+      <DependentUpon>LibrarySelect.cs</DependentUpon>
     </Compile>
     <Compile Include="SongSelect.cs">
       <SubType>Form</SubType>
@@ -72,15 +100,28 @@
     <Compile Include="SongSelect.Designer.cs">
       <DependentUpon>SongSelect.cs</DependentUpon>
     </Compile>
+    <Compile Include="LibrarySelectedEventArgs.cs" />
     <Compile Include="SongSelectedEventArgs.cs" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="SetlistMaintenance.resx">
+      <DependentUpon>SetlistMaintenance.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SetlistSelect.resx">
+      <DependentUpon>SetlistSelect.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="SongCreateEditDelete.resx">
-      <DependentUpon>SongCreateEditDelete.cs</DependentUpon>
+    <EmbeddedResource Include="LibraryMaintenance.resx">
+      <DependentUpon>LibraryMaintenance.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SongMaintenance.resx">
+      <DependentUpon>SongMaintenance.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LibrarySelect.resx">
+      <DependentUpon>LibrarySelect.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SongSelect.resx">
       <DependentUpon>SongSelect.cs</DependentUpon>

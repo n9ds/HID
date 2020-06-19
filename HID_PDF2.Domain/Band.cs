@@ -9,5 +9,10 @@ namespace HID_PDF.Domain
         public int Id { get; set; }
         public String Name { get; set; }
         public virtual ICollection<Setlist> Setlists { get; set; }
+
+        public override String ToString()
+        {
+            return (Name);
+        }
     }
 }

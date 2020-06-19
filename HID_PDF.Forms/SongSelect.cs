@@ -17,6 +17,7 @@ namespace HID_PDF.Forms
     {
         public int SelectedSongId { get; set; }
         public SongLibrary SongLibrary { get; set; }
+        public int? LibraryId { get; set; }
         public Modes Mode { get; set; }
         public enum Modes { Create,
                             Open,
@@ -28,6 +29,15 @@ namespace HID_PDF.Forms
         public SongSelect()
         {
             SongLibrary = new SongLibrary();
+            LibraryId = null;
+            InitializeComponent();
+            LoadSongList();
+        }
+
+        public SongSelect(int LibraryId)
+        {
+            this.LibraryId = LibraryId;
+            SongLibrary = new SongLibrary();
             InitializeComponent();
             LoadSongList();
         }
@@ -36,7 +46,19 @@ namespace HID_PDF.Forms
         {
             ListViewGroup ListGroup = new ListViewGroup("A");
             String CurrentGroup = "";
-            List<Song> Songs = SongLibrary.Songs.OrderBy(S => S.Title).ToList();
+            List<Song> Songs;
+            if (LibraryId == null)
+            {
+                Songs = SongLibrary.Songs.OrderBy(S => S.Title).ToList();
+            }
+            else
+            {
+                Songs = SongLibrary.Libraries.Where(s => s.Id == LibraryId).
+                    FirstOrDefault().
+                    Songs.
+                    OrderBy(S => S.Title).
+                    ToList();
+            }
             ListView songsList = SongList;
             songsList.Items.Clear();
             songsList.Groups.Clear();
@@ -66,7 +88,7 @@ namespace HID_PDF.Forms
 
         private void CreateSong(object sender, EventArgs e)
         {
-            SongCreateEditDelete dlg = new SongCreateEditDelete();
+            var dlg = new SongMaintenance();
             dlg.ShowDialog();
             LoadSongList();
             EnableButtons(sender, e);
@@ -74,10 +96,9 @@ namespace HID_PDF.Forms
 
         private void EditSong(object sender, EventArgs e)
         {
-            // TODO: Make sure a song is selected first.
             var lastSubItem = SongList.SelectedItems[0].SubItems.Count - 1;
             var SongId = int.Parse(SongList.SelectedItems[0].SubItems[lastSubItem].Text);
-            SongCreateEditDelete dlg = new SongCreateEditDelete(SongId, Modes.Edit);
+            var dlg = new SongMaintenance(SongId, Modes.Edit);
             dlg.ShowDialog();
             LoadSongList();
             EnableButtons(sender, e);
@@ -85,10 +106,9 @@ namespace HID_PDF.Forms
 
         private void DeleteSong(object sender, EventArgs e)
         {
-            // TODO: Make sure a song is selected first.
             var lastSubItem = SongList.SelectedItems[0].SubItems.Count - 1;
             var SongId = int.Parse(SongList.SelectedItems[0].SubItems[lastSubItem].Text);
-            SongCreateEditDelete dlg = new SongCreateEditDelete(SongId, Modes.Delete);
+            var dlg = new SongMaintenance(SongId, Modes.Delete);
             dlg.ShowDialog();
             LoadSongList();
             EnableButtons(sender, e);

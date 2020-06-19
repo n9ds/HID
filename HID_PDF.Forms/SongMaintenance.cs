@@ -13,34 +13,34 @@ using HID_PDF.Domain;
 
 namespace HID_PDF.Forms
 {
-    public partial class SongCreateEditDelete : Form
+    public partial class SongMaintenance : Form
     {
         public SongLibrary SongLibrary { get; set; }
-        public Song song { get; set; }
+        public Song Song { get; set; }
         public SongSelect.Modes Mode { get; set; }
         public Dictionary<String, String> Errors { get; set; }
         public bool CancelClicked { get; set; }
 
-        public SongCreateEditDelete()
+        public SongMaintenance()
         {
             SongLibrary = new SongLibrary();
             InitializeComponent();
             Errors = new Dictionary<String, String>();
-            song = null;
+            Song = null;
             Mode = SongSelect.Modes.Create;
         }
 
-        public SongCreateEditDelete(int SongId, SongSelect.Modes DlgMode)
+        public SongMaintenance(int SongId, SongSelect.Modes DlgMode)
             : this ()
         {
-            song = SongLibrary.Songs.Where(s => s.Id == SongId).FirstOrDefault();
-            if (song != null)
+            Song = SongLibrary.Songs.Where(s => s.Id == SongId).FirstOrDefault();
+            if (Song != null)
             {
-                this.SongId.Text = song.Id.ToString();
-                SongTitle.Text = song.Title;
-                SongArtist.Text = song.Artist;
-                SongFilename.Text = song.Filepath;
-                SongKeyIsMinor.Checked = song.Major; // Sign error!
+                this.SongId.Text = Song.Id.ToString();
+                SongTitle.Text = Song.Title;
+                SongArtist.Text = Song.Artist;
+                SongFilename.Text = Song.Filepath;
+                SongKeyIsMinor.Checked = Song.Major; // Sign error!
                 Shown += new EventHandler(ShowSong);
                 SongSelect.Modes DeleteMode = SongSelect.Modes.Delete;
                 SongDelete.Visible = (DeleteMode.CompareTo(DlgMode) == 0);
@@ -51,10 +51,10 @@ namespace HID_PDF.Forms
 
         private void ShowSong(Object sender, EventArgs e)
         {
-            SongKey.SelectedItem = song.Key;
-            SongInstrument.SelectedItem = song.Instrument;
-            SongFirstNote.SelectedItem = song.FirstNote;
-            FileType.SelectedItem = song.Filetype;
+            SongKey.SelectedItem = Song.Key;
+            SongInstrument.SelectedItem = Song.Instrument;
+            SongFirstNote.SelectedItem = Song.FirstNote;
+            FileType.SelectedItem = Song.Filetype;
         }
 
         private void Save(object sender, EventArgs e)
@@ -66,7 +66,7 @@ namespace HID_PDF.Forms
             if (!IsFormValid)
             {
                 MessageBox.Show("Oops: ");
-                var ErrorText = new StringBuilder();
+                //var ErrorText = new StringBuilder();
                 foreach (var errorMsg in Errors)
                 {
                     ErrorMessages.Rows.Add(new[] { errorMsg.Key, errorMsg.Value });
@@ -76,25 +76,25 @@ namespace HID_PDF.Forms
             }
             if (Mode == SongSelect.Modes.Create)
             {
-                song = new Song();
+                Song = new Song();
             }
-            song.Title = SongTitle.Text;
-            song.Artist = SongArtist.Text;
-            song.Instrument = SongInstrument.SelectedItem.ToString();
-            song.Key = SongKey.SelectedItem.ToString(); ;
-            song.Major = true;
-            song.Filepath = SongFilename.Text;
+            Song.Title = SongTitle.Text;
+            Song.Artist = SongArtist.Text;
+            Song.Instrument = SongInstrument.SelectedItem.ToString();
+            Song.Key = SongKey.SelectedItem.ToString(); ;
+            Song.Major = true;
+            Song.Filepath = SongFilename.Text;
             if (SongFirstNote.SelectedItem != null)
             {
-                song.FirstNote = SongFirstNote.SelectedItem.ToString();
+                Song.FirstNote = SongFirstNote.SelectedItem.ToString();
             }
             else
             {
-                song.FirstNote = null;
+                Song.FirstNote = null;
             }
             if (Mode == SongSelect.Modes.Create)
             {
-                SongLibrary.Songs.Add(song);
+                SongLibrary.Songs.Add(Song);
             }
             SongLibrary.SaveChanges();
             Close();
@@ -102,16 +102,16 @@ namespace HID_PDF.Forms
 
         private void Delete(object sender, EventArgs e)
         {
-            if (song == null)
+            if (Song == null)
             {
                 MessageBox.Show("Not found");
             }
             else
             {
-                DialogResult rc = MessageBox.Show("Delete " + song.Title + "?","Confirm Delete",MessageBoxButtons.YesNoCancel);
+                DialogResult rc = MessageBox.Show("Delete " + Song.Title + "?","Confirm Delete",MessageBoxButtons.YesNoCancel);
                 if (rc == DialogResult.Yes)
                 {
-                    SongLibrary.Songs.Remove(song);
+                    SongLibrary.Songs.Remove(Song);
                     SongLibrary.SaveChanges();
                     Close();
                 }
@@ -126,9 +126,11 @@ namespace HID_PDF.Forms
 
         private void SelectFile(object sender, EventArgs e)
         {
-            OpenFileDialog dlg = new OpenFileDialog();
-            // set file filter of dialog   
-            dlg.Filter = "pdf files (*.pdf) |*.pdf;";
+            OpenFileDialog dlg = new OpenFileDialog
+            {
+                // set file filter of dialog   
+                Filter = "pdf files (*.pdf) |*.pdf;"
+            };
             dlg.ShowDialog();
             SongFilename.Text = dlg.FileName;
         }

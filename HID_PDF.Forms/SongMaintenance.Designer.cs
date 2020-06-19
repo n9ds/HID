@@ -1,6 +1,6 @@
 ﻿namespace HID_PDF.Forms
 {
-    partial class SongCreateEditDelete
+    partial class SongMaintenance
     {
         /// <summary>
         /// Required designer variable.

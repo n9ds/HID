@@ -28,11 +28,33 @@ namespace HID_PDF.Data
         public virtual DbSet<Setlist> Setlists { get; set; }
         public virtual DbSet<SetlistEntry> SetlistEntries { get; set; }
         public virtual DbSet<Band> Bands { get; set; }
-
+        // TODO: Add lists of libraries to Song Edit
+        // TODO: Migration to implement M-M
+        // TOOD: Set lists M-M
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Song>().HasKey(i => i.Id);
-            modelBuilder.Entity<Library>().HasKey(l => l.Id).HasMany(L => L.Songs);
+            modelBuilder.Entity<Song>()
+                .HasKey(i => i.Id)
+                .HasMany(l => l.Libraries)
+                .WithMany(s => s.Songs)
+                .Map(t =>
+                {
+                    t.MapLeftKey("SongId");
+                    t.MapRightKey("LibraryId");
+                    t.ToTable("SongsLibraries");
+                });
+
+            modelBuilder.Entity<Library>()
+                .HasKey(l => l.Id)
+                .HasMany(L => L.Songs)
+                .WithMany(l => l.Libraries)
+                .Map(t =>
+                {
+                    t.MapLeftKey("LibraryId");
+                    t.MapRightKey("SongId");
+                    t.ToTable("SongsLibraries");
+                });
+
             modelBuilder.Entity<Setlist>().HasKey(p => p.Id).HasMany(p => p.SetlistEntries);
         }
     }
