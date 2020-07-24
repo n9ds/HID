@@ -119,3 +119,4 @@ C:\Users\Duston\source\repos\HID\HID_PDF.Forms\obj\Debug\HID_PDF.Forms.LibraryMa
 C:\Users\Duston\source\repos\HID\HID_PDF.Forms\obj\Debug\HID_PDF.Forms.SongMaintenance.resources
 C:\Users\Duston\source\repos\HID\HID_PDF.Forms\obj\Debug\HID_PDF.Forms.SetlistMaintenance.resources
 C:\Users\Duston\source\repos\HID\HID_PDF.Forms\obj\Debug\HID_PDF.Forms.SetlistSelect.resources
+C:\Users\Duston\source\repos\HID\HID_PDF.Forms\obj\Debug\HID_PDF.Forms.SetlistShow.resources

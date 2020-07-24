@@ -32,15 +32,15 @@ namespace HID_PDF.Forms
         {
             ListViewGroup ListGroup = new ListViewGroup("A");
             String CurrentGroup = "";
-            List<Setlist> Setlists = SongLibrary.Setlists.OrderBy(S => S.Title).ToList();
+            List<Setlist> Setlists = SongLibrary.Setlists.OrderBy(S => S.Band).ThenBy(S => S.Title).ToList();
             ListView SetlistsList = SetlistList;
             SetlistsList.Items.Clear();
             SetlistsList.Groups.Clear();
             foreach (Setlist s in Setlists)
             {
-                if (!s.Title.Substring(0,1).Equals(CurrentGroup))
+                if (!s.Band.Equals(CurrentGroup))
                 {
-                    CurrentGroup = s.Title.Substring(0, 1);
+                    CurrentGroup = s.Band;
                     ListGroup = new ListViewGroup(CurrentGroup);
                     SetlistsList.Groups.Add(ListGroup);
                 }
@@ -55,7 +55,6 @@ namespace HID_PDF.Forms
             var id = int.Parse(SetlistList.SelectedItems[0].SubItems[lastSubItem].Text);
             s.Mode = (int)SongSelect.Modes.Open;
             s.SetlistId = id;
-            //s.Filename = SongSetlist.Libraries.Where(T => T.Id == id).FirstOrDefault().Filepath;
             OnSetlistSelected(s);
             Close();
         }
@@ -86,11 +85,14 @@ namespace HID_PDF.Forms
             var rc = MessageBox.Show("Are you sure you want to delete the library '" + setlist.Title + "'?", "Delete Setlist", MessageBoxButtons.YesNoCancel);
             if (rc == DialogResult.Yes)
             {
+                foreach (var entry in setlist.SetlistEntries.ToList())
+                {
+                    SongLibrary.SetlistEntries.Remove(entry);
+                }
                 SongLibrary.Setlists.Remove(setlist);
+                SongLibrary.SaveChanges();
             }
-            //SetlistCreateEditDelete dlg = new SetlistCreateEditDelete(SetlistId, SongSelect.Modes.Delete);
-            //dlg.ShowDialog();
-            //LoadSetlistList();
+            LoadSetlistList();
             EnableButtons(sender, e);
         }
 

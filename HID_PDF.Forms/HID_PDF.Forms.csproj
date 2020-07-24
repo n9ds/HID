@@ -82,6 +82,12 @@
     <Compile Include="LibraryMaintenance.Designer.cs">
       <DependentUpon>LibraryMaintenance.cs</DependentUpon>
     </Compile>
+    <Compile Include="SetlistShow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SetlistShow.Designer.cs">
+      <DependentUpon>SetlistShow.cs</DependentUpon>
+    </Compile>
     <Compile Include="SongMaintenance.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -116,6 +122,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="LibraryMaintenance.resx">
       <DependentUpon>LibraryMaintenance.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SetlistShow.resx">
+      <DependentUpon>SetlistShow.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SongMaintenance.resx">
       <DependentUpon>SongMaintenance.cs</DependentUpon>

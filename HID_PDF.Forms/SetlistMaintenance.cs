@@ -51,7 +51,7 @@ namespace HID_PDF.Forms
             LoadSongs(Setlist);
             Mode = DlgMode;
         }
-        // TODO: Drag/Drop and/or Arrows for order
+
         private void LoadSongs(Setlist Setlist)
         {
             var AllSongs = SongLibrary.Songs.OrderBy(S => S.Title);
@@ -105,7 +105,7 @@ namespace HID_PDF.Forms
 
         private void LoadBands()
         {
-            var Bands = SongLibrary.Bands.ToList();
+            var Bands = SongLibrary.Bands.Select(b => b.Name).ToList();
             SetlistBand.DataSource = Bands;
         }
 
@@ -133,18 +133,32 @@ namespace HID_PDF.Forms
             Setlist.Title = SetlistTitle.Text;
             Setlist.Band = SetlistBand.SelectedValue.ToString();
             // Now gather the songs that are in the setlist.
+            foreach (ListViewItem item in SongsInSetlist.Items)
+            {
+                item.SubItems[4].Text = item.Index.ToString(); // Set the SetOrder to where it is in the list.
+            }
             var Songs_Start = SongsAtStart.Items.Cast<ListViewItem>();
             var Songs_End = SongsInSetlist.Items.Cast<ListViewItem>();
             // Except() Items in the first set that don't appear in the second.
             var SongsToRemoveFromSetlist = Songs_Start.Except<ListViewItem>(Songs_End, new SetlistItemComparer()).ToList(); 
             var SongsToAddToSetlist = Songs_End.Except<ListViewItem>(Songs_Start, new SetlistItemComparer()).ToList();
             int SongId;
+            // TODO: Remove from setlist not removing.
+            // TODO: Set order is also not saving.
+            // TODO: Setlist->Open show songs in setlist order an not alphabetically or grouped.
             foreach (ListViewItem SongToRemove in SongsToRemoveFromSetlist)
             {
                 var rc = int.TryParse(SongToRemove.SubItems[3].Text, out SongId);
                 if (rc)
                 {
-                    SongLibrary.SetlistEntries.Remove(SongLibrary.SetlistEntries.Where(s => s.Song.Id == SongId).FirstOrDefault());
+                    //var entry = SongLibrary.SetlistEntries.Where(s => s.Song.Id == SongId).FirstOrDefault();
+                    var entry = Setlist.SetlistEntries.Where(s => s.Song.Id == SongId).FirstOrDefault();
+                    if (entry != null)
+                    {
+                        //SongLibrary.SetlistEntries.Remove(SongLibrary.SetlistEntries.Where(s => s.Song.Id == SongId).FirstOrDefault());
+                        //Setlist.SetlistEntries.Remove(entry);
+                        SongLibrary.SetlistEntries.Remove(entry);
+                    }
                 }
             }
             // Update the list of songs.
@@ -162,27 +176,27 @@ namespace HID_PDF.Forms
             {
                 SongLibrary.Setlists.Add(Setlist);
             }
-            SongLibrary.SaveChanges();
+            var recordsUpdated = SongLibrary.SaveChanges();
             Close();
         }
 
-        private void Delete(object sender, EventArgs e)
-        {
-            if (Setlist == null)
-            {
-                MessageBox.Show("Not found");
-            }
-            else
-            {
-                DialogResult rc = MessageBox.Show("Delete " + Setlist.Title + "?", "Confirm Delete", MessageBoxButtons.YesNoCancel);
-                if (rc == DialogResult.Yes)
-                {
-                    SongLibrary.Setlists.Remove(Setlist);
-                    SongLibrary.SaveChanges();
-                    Close();
-                }
-            }
-        }
+        //private void Delete(object sender, EventArgs e)
+        //{
+        //    if (Setlist == null)
+        //    {
+        //        MessageBox.Show("Not found");
+        //    }
+        //    else
+        //    {
+        //        DialogResult rc = MessageBox.Show("Delete " + Setlist.Title + "?", "Confirm Delete", MessageBoxButtons.YesNoCancel);
+        //        if (rc == DialogResult.Yes)
+        //        {
+        //            SongLibrary.Setlists.Remove(Setlist);
+        //            SongLibrary.SaveChanges();
+        //            Close();
+        //        }
+        //    }
+        //}
 
         private void CloseWindow(object sender, EventArgs e)
         {
@@ -190,19 +204,20 @@ namespace HID_PDF.Forms
             Close();
         }
         // We'll leave this in there in case we want to import a CSV or something.
-        private void SelectFile(object sender, EventArgs e)
-        {
-            OpenFileDialog dlg = new OpenFileDialog {
-                // set file filter of dialog   
-                Filter = "pdf files (*.pdf) |*.pdf;"
-            };
-            dlg.ShowDialog();
-            //SongFilename.Text = dlg.FileName;
-        }
+        //private void SelectFile(object sender, EventArgs e)
+        //{
+        //    OpenFileDialog dlg = new OpenFileDialog {
+        //        // set file filter of dialog   
+        //        Filter = "pdf files (*.pdf) |*.pdf;"
+        //    };
+        //    dlg.ShowDialog();
+        //    //SongFilename.Text = dlg.FileName;
+        //}
         private bool ValidateForm()
         {
             // TODO: Iterate through a list of fields.
             // TODO: Make Validation configurable.
+            // TODO: Move validation to another class.
             bool IsFormValid = ValidateSongTextField("SetlistTitle");
             IsFormValid &= ValidateSongListBox("SetlistBand");
             return (IsFormValid);
@@ -374,23 +389,122 @@ namespace HID_PDF.Forms
         private void MoveItemUp(object sender, EventArgs e)
         {
             //only moving one item at a time.
-            var item = SongsInSetlist.SelectedItems[0];
-            var NewPosition = SongsInSetlist.SelectedIndices[0] - 1;
-            if (NewPosition >= 0)
+            if (SongsInSetlist.SelectedItems.Count > 0)
             {
-                SongsInSetlist.Items.Remove(item);
-                SongsInSetlist.Items.Insert(NewPosition, item);
+                var item = SongsInSetlist.SelectedItems[0];
+                var NewPosition = SongsInSetlist.SelectedIndices[0] - 1;
+                if (NewPosition >= 0)
+                {
+                    SongsInSetlist.Items.Remove(item);
+                    SongsInSetlist.Items.Insert(NewPosition, item);
+                }
             }
         }
 
         private void MoveItemDown(object sender, EventArgs e)
         {
-            var item = SongsInSetlist.SelectedItems[0];
-            var NewPosition = SongsInSetlist.SelectedIndices[0] + 1;
-            if (NewPosition < SongsInSetlist.Items.Count)
+            if (SongsInSetlist.SelectedItems.Count > 0)
             {
-                SongsInSetlist.Items.Remove(item);
-                SongsInSetlist.Items.Insert(NewPosition, item);
+                var item = SongsInSetlist.SelectedItems[0];
+                var NewPosition = SongsInSetlist.SelectedIndices[0] + 1;
+                if (NewPosition < SongsInSetlist.Items.Count)
+                {
+                    SongsInSetlist.Items.Remove(item);
+                    SongsInSetlist.Items.Insert(NewPosition, item);
+                }
+            }
+        }
+
+        private void SongsAvailable_ItemDrag(object sender, ItemDragEventArgs e)
+        {
+            var items = new List<ListViewItem>();
+            items.Add((ListViewItem)e.Item);
+            foreach (ListViewItem lvi in SongsAvailable.SelectedItems)
+            {
+                if (!items.Contains(lvi))
+                {
+                    items.Add(lvi);
+                }
+            }
+            SongsAvailable.DoDragDrop(items, DragDropEffects.Move);
+        }
+
+        private void SongsAvailable_DragOver(object sender, DragEventArgs e)
+        {
+            if (e.Data.GetDataPresent(typeof(List<ListViewItem>)))
+            {
+                e.Effect = DragDropEffects.Move;
+            }
+        }
+
+        private void SongsAvailable_DragDrop(object sender, DragEventArgs e)
+        {
+            ListViewGroup ListGroup;
+             if (e.Data.GetDataPresent(typeof(List<ListViewItem>)))
+            {
+                var items = (List<ListViewItem>)e.Data.GetData(typeof(List<ListViewItem>));
+                // move to dest LV (Find group)
+                foreach (ListViewItem lvi in items)
+                {
+                    var groupHeader = lvi.SubItems[0].Text.Substring(0, 1);
+                    // Get the first group that matches, or null if it's not there
+                    ListGroup = SongsAvailable.Groups.Cast<ListViewGroup>()
+                        .FirstOrDefault(g => g.Header == groupHeader);
+
+                    // If it's not there, create it and add it
+                    if (ListGroup == null)
+                    {
+                        ListGroup = new ListViewGroup(groupHeader);
+                        SongsAvailable.Groups.Add(ListGroup);
+                    }
+
+                    // Move the song to the goup and add the song to the Setlist
+                    // LVI obj can only belong to one LVI, remove
+                    lvi.ListView.Items.Remove(lvi);
+                    lvi.Group = ListGroup;
+                    SongsAvailable.Items.Add(lvi);
+                }
+                SortListViewGroups(SongsAvailable);
+            }
+        }
+
+        private void SongsInsSetlist_ItemDrag(object sender, ItemDragEventArgs e)
+        {
+            // create array or collection for all selected items
+            var items = new List<ListViewItem>();
+            // add dragged one first
+            items.Add((ListViewItem)e.Item);
+            // optionally add the other selected ones
+            foreach (ListViewItem lvi in SongsInSetlist.SelectedItems)
+            {
+                if (!items.Contains(lvi))
+                {
+                    items.Add(lvi);
+                }
+            }
+            SongsInSetlist.DoDragDrop(items, DragDropEffects.Move);
+        }
+
+        private void SongsInSetlist_DragOver(object sender, DragEventArgs e)
+        {
+            if (e.Data.GetDataPresent(typeof(List<ListViewItem>)))
+            {
+                e.Effect = DragDropEffects.Move;
+            }
+        }
+
+        private void SongsInSetlist_DragDrop(object sender, DragEventArgs e)
+        {
+            if (e.Data.GetDataPresent(typeof(List<ListViewItem>)))
+            {
+                var items = (List<ListViewItem>)e.Data.GetData(typeof(List<ListViewItem>));
+                // move to dest LV
+                foreach (ListViewItem lvi in items)
+                {
+                    // LVI obj can only belong to one LVI, remove
+                    lvi.ListView.Items.Remove(lvi);
+                    SongsInSetlist.Items.Add(lvi);
+                }
             }
         }
     }

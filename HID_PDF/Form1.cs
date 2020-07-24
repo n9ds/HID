@@ -24,7 +24,7 @@ namespace HID_PDF
             public String ConfigFile { get; set; }
             public String DeviceName { get; set; }
         }
-
+        // TODO: Put buttons at the bottom for Next/Prev if the song was opened from a setlist.
         public Form1()
         {
             InitializeComponent();
@@ -256,7 +256,7 @@ namespace HID_PDF
 
         private void Dlg_SetlistSelected(object sender, SetlistSelectedEventArgs e)
         {
-            SongSelect dlg = new SongSelect(e.SetlistId);
+            SetlistShow dlg = new SetlistShow(e.SetlistId);
             dlg.SongSelected += new EventHandler<SongSelectedEventArgs>(Dlg_SongSelected);
             dlg.Show();
         }

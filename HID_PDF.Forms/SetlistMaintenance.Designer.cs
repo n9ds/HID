@@ -28,9 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SetlistMaintenance));
             this.SetlistTitle = new System.Windows.Forms.TextBox();
             this.lblSetlistTitle = new System.Windows.Forms.Label();
             this.lblSetlistDescription = new System.Windows.Forms.Label();
@@ -46,12 +47,14 @@
             this.SongArtist = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Instrument = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.SongId = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.SetOrder = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.lblSongs = new System.Windows.Forms.Label();
             this.SongsInSetlist = new System.Windows.Forms.ListView();
             this.SelectedTitle = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.SelectedArtist = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.SelectedInstrument = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.SelectedSongId = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.SelectedSetOrder = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.lblSongsInSetlist = new System.Windows.Forms.Label();
             this.btnRemoveAll = new System.Windows.Forms.Button();
             this.btnRemoveSong = new System.Windows.Forms.Button();
@@ -59,8 +62,6 @@
             this.btnAddAll = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
-            this.SelectedSetOrder = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.SetOrder = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.SetlistBand = new System.Windows.Forms.ListBox();
             ((System.ComponentModel.ISupportInitialize)(this.ErrorMessages)).BeginInit();
             this.SuspendLayout();
@@ -136,38 +137,38 @@
             this.ErrorMessages.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.ErrorMessages.CausesValidation = false;
             this.ErrorMessages.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.ErrorMessages.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.ErrorMessages.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.ErrorMessages.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.ErrorMessages.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.FieldName,
             this.ErrorMessage});
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.ErrorMessages.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.ErrorMessages.DefaultCellStyle = dataGridViewCellStyle5;
             this.ErrorMessages.Location = new System.Drawing.Point(38, 393);
             this.ErrorMessages.Name = "ErrorMessages";
             this.ErrorMessages.ReadOnly = true;
             this.ErrorMessages.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Sunken;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.ErrorMessages.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.ErrorMessages.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
             this.ErrorMessages.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.ErrorMessages.Size = new System.Drawing.Size(529, 56);
             this.ErrorMessages.TabIndex = 22;
@@ -191,6 +192,7 @@
             // 
             // SongsAvailable
             // 
+            this.SongsAvailable.AllowDrop = true;
             this.SongsAvailable.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.SongTitle,
             this.SongArtist,
@@ -205,6 +207,9 @@
             this.SongsAvailable.TabIndex = 24;
             this.SongsAvailable.UseCompatibleStateImageBehavior = false;
             this.SongsAvailable.View = System.Windows.Forms.View.Details;
+            this.SongsAvailable.ItemDrag += new System.Windows.Forms.ItemDragEventHandler(this.SongsAvailable_ItemDrag);
+            this.SongsAvailable.DragDrop += new System.Windows.Forms.DragEventHandler(this.SongsAvailable_DragDrop);
+            this.SongsAvailable.DragOver += new System.Windows.Forms.DragEventHandler(this.SongsAvailable_DragOver);
             // 
             // SongTitle
             // 
@@ -222,6 +227,11 @@
             // 
             this.SongId.Width = 0;
             // 
+            // SetOrder
+            // 
+            this.SetOrder.Text = "Set Order";
+            this.SetOrder.Width = 0;
+            // 
             // lblSongs
             // 
             this.lblSongs.AutoSize = true;
@@ -233,6 +243,7 @@
             // 
             // SongsInSetlist
             // 
+            this.SongsInSetlist.AllowDrop = true;
             this.SongsInSetlist.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.SelectedTitle,
             this.SelectedArtist,
@@ -247,6 +258,9 @@
             this.SongsInSetlist.TabIndex = 26;
             this.SongsInSetlist.UseCompatibleStateImageBehavior = false;
             this.SongsInSetlist.View = System.Windows.Forms.View.Details;
+            this.SongsInSetlist.ItemDrag += new System.Windows.Forms.ItemDragEventHandler(this.SongsInsSetlist_ItemDrag);
+            this.SongsInSetlist.DragDrop += new System.Windows.Forms.DragEventHandler(this.SongsInSetlist_DragDrop);
+            this.SongsInSetlist.DragOver += new System.Windows.Forms.DragEventHandler(this.SongsInSetlist_DragOver);
             // 
             // SelectedTitle
             // 
@@ -259,10 +273,15 @@
             // SelectedInstrument
             // 
             this.SelectedInstrument.Text = "Instrument";
+            this.SelectedInstrument.Width = 0;
             // 
             // SelectedSongId
             // 
             this.SelectedSongId.Width = 0;
+            // 
+            // SelectedSetOrder
+            // 
+            this.SelectedSetOrder.Text = "Set Order";
             // 
             // lblSongsInSetlist
             // 
@@ -315,7 +334,8 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(630, 173);
+            this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
+            this.button1.Location = new System.Drawing.Point(630, 172);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(25, 25);
             this.button1.TabIndex = 32;
@@ -324,6 +344,7 @@
             // 
             // button2
             // 
+            this.button2.Image = ((System.Drawing.Image)(resources.GetObject("button2.Image")));
             this.button2.Location = new System.Drawing.Point(630, 216);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(25, 25);

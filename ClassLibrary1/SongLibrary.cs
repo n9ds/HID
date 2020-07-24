@@ -29,8 +29,6 @@ namespace HID_PDF.Data
         public virtual DbSet<SetlistEntry> SetlistEntries { get; set; }
         public virtual DbSet<Band> Bands { get; set; }
         // TODO: Add lists of libraries to Song Edit
-        // TODO: Migration to implement M-M
-        // TOOD: Set lists M-M
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Song>()
@@ -56,6 +54,7 @@ namespace HID_PDF.Data
                 });
 
             modelBuilder.Entity<Setlist>().HasKey(p => p.Id).HasMany(p => p.SetlistEntries);
+
         }
     }
 }
