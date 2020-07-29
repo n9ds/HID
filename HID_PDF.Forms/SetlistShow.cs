@@ -39,9 +39,6 @@ namespace HID_PDF.Forms
                 LoadSetlist();
             }
         }
-// TODO: Make the buttons do things
-// TODO: Open PDF
-// TODO: Make sure it's modeless.
 
         public void LoadSetlist()
         {
@@ -62,7 +59,7 @@ namespace HID_PDF.Forms
 
         }
 
-        private void NextSong(object sender, EventArgs e)
+        public void NextSong(object sender, EventArgs e)
         {
             var NextSelection = 0;
             if (listView1.SelectedItems.Count == 0)
@@ -77,7 +74,7 @@ namespace HID_PDF.Forms
             listView1.Select();
         }
 
-        private void PrevSong(object sender, EventArgs e)
+        public void PrevSong(object sender, EventArgs e)
         {
             var CurrentSelection = (listView1.SelectedIndices.Count == 0 ? 0 : listView1.SelectedIndices[0]);
             var PrevSelection = (CurrentSelection > 0  ? CurrentSelection - 1 : 0);
@@ -104,13 +101,5 @@ namespace HID_PDF.Forms
             this.DialogResult = DialogResult.Cancel;
             this.Close();
         }
-
-        //protected virtual void OnSongSelected(SongSelectedEventArgs e)
-        //{
-        //    var lastSubItem = listView1.SelectedItems[0].SubItems.Count - 1;
-        //    e.SongId = int.Parse(listView1.SelectedItems[0].SubItems[lastSubItem].Text);
-        //    SongSelected(this, e);
-        //}
-
     }
 }

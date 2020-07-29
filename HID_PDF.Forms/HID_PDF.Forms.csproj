@@ -63,7 +63,7 @@
     <Compile Include="SetlistMaintenance.Designer.cs">
       <DependentUpon>SetlistMaintenance.cs</DependentUpon>
     </Compile>
-    <Compile Include="SetlistSelectedEventArgs.cs" />
+    <Compile Include="Events\SetlistSelectedEventArgs.cs" />
     <Compile Include="SetlistSelect.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -106,8 +106,8 @@
     <Compile Include="SongSelect.Designer.cs">
       <DependentUpon>SongSelect.cs</DependentUpon>
     </Compile>
-    <Compile Include="LibrarySelectedEventArgs.cs" />
-    <Compile Include="SongSelectedEventArgs.cs" />
+    <Compile Include="Events\LibrarySelectedEventArgs.cs" />
+    <Compile Include="Events\SongSelectedEventArgs.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="SetlistMaintenance.resx">

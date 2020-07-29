@@ -40,19 +40,21 @@ namespace HID_PDF
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.Library = new System.Windows.Forms.ToolStripMenuItem();
             this.setListToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.createToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.editToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.deleteToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.songToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.selectToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.configureToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.Help = new System.Windows.Forms.ToolStripMenuItem();
             this.HelpAbout = new System.Windows.Forms.ToolStripMenuItem();
+            this.createToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.editToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.deleteToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.firstButton = new System.Windows.Forms.Button();
             this.lastButton = new System.Windows.Forms.Button();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.NextSong = new System.Windows.Forms.Button();
+            this.PrevSong = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.axAcroPDF1)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
@@ -61,7 +63,7 @@ namespace HID_PDF
             // axAcroPDF1
             // 
             this.axAcroPDF1.Enabled = true;
-            this.axAcroPDF1.Location = new System.Drawing.Point(0, 0);
+            this.axAcroPDF1.Location = new System.Drawing.Point(0, 27);
             this.axAcroPDF1.Name = "axAcroPDF1";
             this.axAcroPDF1.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("axAcroPDF1.OcxState")));
             this.axAcroPDF1.Size = new System.Drawing.Size(192, 192);
@@ -140,6 +142,7 @@ namespace HID_PDF
             this.setListToolStripMenuItem.Size = new System.Drawing.Size(56, 20);
             this.setListToolStripMenuItem.Text = "Set List";
             this.setListToolStripMenuItem.Click += new System.EventHandler(this.OpenSetlistsDialog);
+            // 
             // songToolStripMenuItem
             // 
             this.songToolStripMenuItem.Name = "songToolStripMenuItem";
@@ -184,10 +187,25 @@ namespace HID_PDF
             this.HelpAbout.Size = new System.Drawing.Size(107, 22);
             this.HelpAbout.Text = "About";
             // 
+            // createToolStripMenuItem1
+            // 
+            this.createToolStripMenuItem1.Name = "createToolStripMenuItem1";
+            this.createToolStripMenuItem1.Size = new System.Drawing.Size(32, 19);
+            // 
+            // editToolStripMenuItem1
+            // 
+            this.editToolStripMenuItem1.Name = "editToolStripMenuItem1";
+            this.editToolStripMenuItem1.Size = new System.Drawing.Size(32, 19);
+            // 
+            // deleteToolStripMenuItem1
+            // 
+            this.deleteToolStripMenuItem1.Name = "deleteToolStripMenuItem1";
+            this.deleteToolStripMenuItem1.Size = new System.Drawing.Size(32, 19);
+            // 
             // firstButton
             // 
             this.firstButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.firstButton.Location = new System.Drawing.Point(448, 583);
+            this.firstButton.Location = new System.Drawing.Point(448, 584);
             this.firstButton.Name = "firstButton";
             this.firstButton.Size = new System.Drawing.Size(44, 23);
             this.firstButton.TabIndex = 6;
@@ -222,11 +240,33 @@ namespace HID_PDF
             this.toolStripStatusLabel1.Size = new System.Drawing.Size(118, 17);
             this.toolStripStatusLabel1.Text = "toolStripStatusLabel1";
             // 
+            // NextSong
+            // 
+            this.NextSong.Location = new System.Drawing.Point(12, 43);
+            this.NextSong.Name = "NextSong";
+            this.NextSong.Size = new System.Drawing.Size(75, 23);
+            this.NextSong.TabIndex = 8;
+            this.NextSong.Text = "Song >";
+            this.NextSong.UseVisualStyleBackColor = true;
+            this.NextSong.Click += new System.EventHandler(this.NextSong_Click);
+            // 
+            // PrevSong
+            // 
+            this.PrevSong.Location = new System.Drawing.Point(12, 72);
+            this.PrevSong.Name = "PrevSong";
+            this.PrevSong.Size = new System.Drawing.Size(75, 23);
+            this.PrevSong.TabIndex = 9;
+            this.PrevSong.Text = "< Song";
+            this.PrevSong.UseVisualStyleBackColor = true;
+            this.PrevSong.Click += new System.EventHandler(this.PrevSong_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(768, 631);
+            this.Controls.Add(this.PrevSong);
+            this.Controls.Add(this.NextSong);
             this.Controls.Add(this.lastButton);
             this.Controls.Add(this.firstButton);
             this.Controls.Add(this.statusStrip1);
@@ -273,6 +313,8 @@ namespace HID_PDF
         private System.Windows.Forms.ToolStripMenuItem editToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem deleteToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem songToolStripMenuItem;
+        private System.Windows.Forms.Button NextSong;
+        private System.Windows.Forms.Button PrevSong;
     }
 }
 

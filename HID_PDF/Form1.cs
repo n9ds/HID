@@ -10,6 +10,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using HID_PDF.Properties;
 using HID_PDF.Forms;
+using HID_PDF.Data;
+using HID_PDF.Domain;
 
 namespace HID_PDF
 {
@@ -19,15 +21,36 @@ namespace HID_PDF
         private Thread DeviceThread;
         private AxAcroPDFLib.AxAcroPDF axAcroPDF1;
         private delegate void FootPedalNotification(object sender, HIDEventArgs e);
+        private SongLibrary SongLibrary;
+        private SetlistShow OpenSetlist;
+        private SongSelect SongSelectDlg;
+        private SetlistSelect SetlistSelectDlg;
+        private SetlistShow SetlistShowDlg;
+        private LibrarySelect LibrarySelectDlg;
+
+        public enum Modes
+        {
+            Create,
+            Open,
+            Edit,
+            Delete
+        };
+
+        public event EventHandler<SongSelectedEventArgs> SongSelected;
+
         private class DeviceConfigParams
         {
             public String ConfigFile { get; set; }
             public String DeviceName { get; set; }
         }
-        // TODO: Put buttons at the bottom for Next/Prev if the song was opened from a setlist.
+
         public Form1()
         {
             InitializeComponent();
+            SongLibrary = new SongLibrary();
+            SongSelectDlg = null;
+            SetlistSelectDlg = null;
+            LibrarySelectDlg = null;
             FootPedalMonitor = new FootPedalMonitor();
             DeviceConfigParams deviceConfigParams = new DeviceConfigParams();
             if (String.IsNullOrEmpty(Properties.Settings.Default.ConfigFile))
@@ -70,25 +93,12 @@ namespace HID_PDF
             }
         }
 
-        private void OpenPDF_Click(object sender, EventArgs e)
-        {
-            // Create object of Open file dialog class  
-            {
-                var dlg = new OpenFileDialog();
-                // set file filter of dialog   
-                dlg.Filter = "pdf files (*.pdf) |*.pdf;";
-                dlg.ShowDialog();
-                if (dlg.FileName != null)
-                {
-                    OpenPDF(dlg.FileName);
-                }
-            }
-        }
 
+        #region "Control Events"
         private void First_Click(object sender, EventArgs e)
         {
             FootPedalMonitor.SendMessage("00-02-00");
-            //axAcroPDF1.gotoFirstPage();
+            axAcroPDF1.gotoFirstPage();
         }
 
         private void Next_Click(object sender, EventArgs e)
@@ -106,6 +116,19 @@ namespace HID_PDF
             axAcroPDF1.gotoLastPage();
         }
 
+        private void NextSong_Click(object sender, EventArgs e)
+        {
+            OpenSetlist.NextSong(sender, e);
+        }
+
+        private void PrevSong_Click(object sender, EventArgs e)
+        {
+            OpenSetlist.PrevSong(sender, e);
+        }
+
+        #endregion
+
+        #region "PDF Specific"
         private void ResizePDF(object sender, EventArgs e)
         {
             RedrawChildren(sender, e);
@@ -129,6 +152,9 @@ namespace HID_PDF
             axAcroPDF1.ClientSize = pdfSize;
             axAcroPDF1.setPageMode("PDUseNone");
         }
+        #endregion
+
+        #region "Form Events"
 
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -149,6 +175,21 @@ namespace HID_PDF
 
         }
 
+        private void OpenPDF_Click(object sender, EventArgs e)
+        {
+            // Create object of Open file dialog class  
+            {
+                var dlg = new OpenFileDialog();
+                // set file filter of dialog   
+                dlg.Filter = "pdf files (*.pdf) |*.pdf;";
+                dlg.ShowDialog();
+                if (dlg.FileName != null)
+                {
+                    OpenPDF(dlg.FileName);
+                }
+            }
+        }
+
         private void HelpAbout_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
             var dlg = new HelpAbout();
@@ -167,7 +208,9 @@ namespace HID_PDF
                 InitializeDevice(deviceConfigParams);
             }
         }
+        #endregion
 
+        #region "Device Events"
         public void HidDeviceRead(object sender, HIDEventArgs e)
          {
             if (!axAcroPDF1.IsDisposed)
@@ -249,16 +292,23 @@ namespace HID_PDF
 
         private void Dlg_LibrarySelected(object sender, LibrarySelectedEventArgs e)
         {
-            SongSelect dlg = new SongSelect(e.LibraryId);
-            dlg.SongSelected += new EventHandler<SongSelectedEventArgs>(Dlg_SongSelected);
-            dlg.Show();
+            if (SongSelectDlg == null)
+            {
+                SongSelectDlg = new SongSelect(e.LibraryId);
+                SongSelectDlg.SongSelected += new EventHandler<SongSelectedEventArgs>(Dlg_SongSelected);
+            }
+            SongSelectDlg.Show();
         }
 
         private void Dlg_SetlistSelected(object sender, SetlistSelectedEventArgs e)
         {
-            SetlistShow dlg = new SetlistShow(e.SetlistId);
-            dlg.SongSelected += new EventHandler<SongSelectedEventArgs>(Dlg_SongSelected);
-            dlg.Show();
+            if (SetlistShowDlg == null || SetlistShowDlg.IsDisposed)
+            {
+                SetlistShowDlg = new SetlistShow(e.SetlistId);
+                OpenSetlist = SetlistShowDlg;
+                SetlistShowDlg.SongSelected += new EventHandler<SongSelectedEventArgs>(Dlg_SongSelected);
+            }
+            SetlistShowDlg.Show();
         }
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
@@ -284,21 +334,31 @@ namespace HID_PDF
             {
                 DeviceThread.Abort();
             }
+            //axAcroPDF1.
             this.Close();
         }
 
+        #endregion
+        // TODO: Check to make sure modeless dialogs aren't already open.
+        #region "Other events"
         private void SongSelect(object sender, EventArgs e)
         {
-            SongSelect dlg = new SongSelect();
-            dlg.SongSelected += new EventHandler<SongSelectedEventArgs>(Dlg_SongSelected);
-            dlg.Show();
+            if (SongSelectDlg == null || SongSelectDlg.IsDisposed)
+            {
+                SongSelectDlg = new SongSelect();
+                SongSelectDlg.SongSelected += new EventHandler<SongSelectedEventArgs>(Dlg_SongSelected);
+            }
+            SongSelectDlg.Show();
         }
 
         private void LibrarySelect (object sender, EventArgs e)
         {
-            LibrarySelect dlg = new LibrarySelect();
-            dlg.LibrarySelected += new EventHandler<LibrarySelectedEventArgs>(Dlg_LibrarySelected);
-            dlg.Show();
+            if (LibrarySelectDlg == null || SongSelectDlg.IsDisposed)
+            {
+                LibrarySelectDlg = new LibrarySelect();
+                LibrarySelectDlg.LibrarySelected += new EventHandler<LibrarySelectedEventArgs>(Dlg_LibrarySelected);
+            }
+            LibrarySelectDlg.Show();
         }
 
         private void OpenPDF (String Filename)
@@ -314,23 +374,85 @@ namespace HID_PDF
 
         private void OpenSongsDialog(object sender, EventArgs e)
         {
-            SongSelect dlg = new SongSelect();
-            dlg.SongSelected += new EventHandler<SongSelectedEventArgs>(Dlg_SongSelected);
-            dlg.Show();
+            if (SongSelectDlg == null || SongSelectDlg.IsDisposed)
+            {
+                SongSelectDlg = new SongSelect();
+                SongSelectDlg.SongSelected += new EventHandler<SongSelectedEventArgs>(Dlg_SongSelected);
+            }
+            SongSelectDlg.Show();
         }
 
         private void OpenLibrariesDialog(object sender, EventArgs e)
         {
-            LibrarySelect dlg = new LibrarySelect();
-            dlg.LibrarySelected += new EventHandler<LibrarySelectedEventArgs>(Dlg_LibrarySelected);
-            dlg.Show();
+            LibrarySelectDlg = new LibrarySelect();
+            LibrarySelectDlg.LibrarySelected += new EventHandler<LibrarySelectedEventArgs>(Dlg_LibrarySelected);
+            LibrarySelectDlg.Show();
         }
 
         private void OpenSetlistsDialog(object sender, EventArgs e)
         {
-            SetlistSelect dlg = new SetlistSelect();
-            dlg.SetlistSelected += new EventHandler<SetlistSelectedEventArgs>(Dlg_SetlistSelected);
-            dlg.Show();
+            SetlistSelectDlg = new SetlistSelect();
+            SetlistSelectDlg.SetlistSelected += new EventHandler<SetlistSelectedEventArgs>(Dlg_SetlistSelected);
+            SetlistSelectDlg.Show();
         }
+        #endregion
+
+        #region "Deprecated/Not implented yet"
+        //public void LoadSetlist(int SetlistId)
+        //{
+        //    Setlist setlist = SongLibrary.Setlists
+        //        .Include("SetlistEntries.Song")
+        //        .Where(S => S.Id == SetlistId).FirstOrDefault();
+        //    if (setlist == null)
+        //    {
+        //        throw (new NotImplementedException());
+        //    }
+        //    List<SetlistEntry> Set = setlist.SetlistEntries.ToList().OrderBy(s => s.SetOrder).ToList();
+        //    foreach (SetlistEntry sl in Set)
+        //    {
+        //        Song s = sl.Song;
+        //        // The songs don't have a set order so we put in a dummy value.  Makes moving items back and forth easier.
+        //        listView1.Items.Add(new ListViewItem(new[] { s.Title, s.Key, s.FirstNote, s.Id.ToString(), sl.SetOrder.ToString() }));
+        //    }
+        //}
+
+        //private void NextSong(object sender, EventArgs e)
+
+        //{
+        //    var NextSelection = 0;
+        //    if (listView1.SelectedItems.Count == 0)
+        //    {
+        //        NextSelection = 0;
+        //    }
+        //    else
+        //    {
+        //        NextSelection = (listView1.SelectedIndices[0] < listView1.Items.Count - 1 ? listView1.SelectedIndices[0] + 1 : listView1.Items.Count - 1);
+        //    }
+        //    listView1.Items[NextSelection].Selected = true;
+        //    listView1.Select();
+        //}
+
+        //private void PrevSong(object sender, EventArgs e)
+        //{
+        //    var CurrentSelection = (listView1.SelectedIndices.Count == 0 ? 0 : listView1.SelectedIndices[0]);
+        //    var PrevSelection = (CurrentSelection > 0 ? CurrentSelection - 1 : 0);
+        //    listView1.Items[PrevSelection].Selected = true;
+        //    listView1.Select();
+        //}
+
+        //private void OpenSong(object sender, EventArgs e)
+        //{
+        //    if (listView1.SelectedIndices.Count > 0)
+        //    {
+        //        var Song = listView1.SelectedItems[0].SubItems[3].Text;
+        //        var SongId = int.Parse(Song);
+        //        SongSelectedEventArgs songSelectedEventArgs = new SongSelectedEventArgs();
+        //        songSelectedEventArgs.SongId = SongId;
+        //        songSelectedEventArgs.Mode = (int)Modes.Open;
+        //        songSelectedEventArgs.Filename = SongLibrary.Songs.Where(T => T.Id == SongId).FirstOrDefault().Filepath;
+        //        SongSelected(this, songSelectedEventArgs);
+        //    }
+        //}
+        #endregion
     }
 }
