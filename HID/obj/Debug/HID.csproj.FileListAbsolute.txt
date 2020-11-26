@@ -28,3 +28,5 @@ C:\Users\Duston\Source\Repos\HID\HID\obj\Debug\HID.application
 C:\Users\Duston\Source\Repos\HID\HID\obj\Debug\HID.csproj.CopyComplete
 C:\Users\Duston\Source\Repos\HID\HID\obj\Debug\HID.exe
 C:\Users\Duston\Source\Repos\HID\HID\obj\Debug\HID.pdb
+C:\Users\Duston\source\repos\HID\HID\obj\Debug\HID.Properties.Resources.resources
+C:\Users\Duston\source\repos\HID\HID\obj\Debug\HID.csproj.GenerateResource.cache

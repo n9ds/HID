@@ -42,7 +42,7 @@ namespace HID_PDF.Forms
             LoadSongList();
         }
 
-        private void LoadSongList()
+        public void LoadSongList()
         {
             ListViewGroup ListGroup = new ListViewGroup("A");
             String CurrentGroup = "";

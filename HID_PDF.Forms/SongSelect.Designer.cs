@@ -57,6 +57,7 @@
             this.SongList.UseCompatibleStateImageBehavior = false;
             this.SongList.View = System.Windows.Forms.View.Details;
             this.SongList.SelectedIndexChanged += new System.EventHandler(this.EnableButtons);
+            this.SongList.DoubleClick += new System.EventHandler(this.OpenSong);
             // 
             // Title
             // 
@@ -66,11 +67,13 @@
             // Artist
             // 
             this.Artist.Text = "Artist";
+            this.Artist.Width = 90;
             // 
             // Instrument
             // 
             this.Instrument.DisplayIndex = 3;
             this.Instrument.Text = "Instrument";
+            this.Instrument.Width = 90;
             // 
             // SongId
             // 
@@ -144,7 +147,7 @@
             this.Controls.Add(this.btnOpenSong);
             this.Controls.Add(this.SongList);
             this.Name = "SongSelect";
-            this.Text = "SongSelect";
+            this.Text = "Select a Song";
             this.ResumeLayout(false);
 
         }

@@ -42,14 +42,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="HID.exe" size="6112">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="HID.exe" size="6656">
       <assemblyIdentity name="HID" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>mySfD8d5npij24p3/3AnLzLs7xIDbHpu7UTrb+vAQ5I=</dsig:DigestValue>
+        <dsig:DigestValue>a9vmO+oaaCwOc5hcLV3yLCrmhg9P4YviXKmNM3Rh7JA=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

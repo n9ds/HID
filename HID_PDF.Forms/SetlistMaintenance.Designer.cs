@@ -77,7 +77,7 @@
             // lblSetlistTitle
             // 
             this.lblSetlistTitle.AutoSize = true;
-            this.lblSetlistTitle.Location = new System.Drawing.Point(81, 50);
+            this.lblSetlistTitle.Location = new System.Drawing.Point(86, 50);
             this.lblSetlistTitle.Name = "lblSetlistTitle";
             this.lblSetlistTitle.Size = new System.Drawing.Size(27, 13);
             this.lblSetlistTitle.TabIndex = 3;
@@ -86,7 +86,7 @@
             // lblSetlistDescription
             // 
             this.lblSetlistDescription.AutoSize = true;
-            this.lblSetlistDescription.Location = new System.Drawing.Point(76, 76);
+            this.lblSetlistDescription.Location = new System.Drawing.Point(81, 76);
             this.lblSetlistDescription.Name = "lblSetlistDescription";
             this.lblSetlistDescription.Size = new System.Drawing.Size(32, 13);
             this.lblSetlistDescription.TabIndex = 4;
@@ -125,7 +125,7 @@
             // 
             // SetlistId
             // 
-            this.SetlistId.Location = new System.Drawing.Point(119, 21);
+            this.SetlistId.Location = new System.Drawing.Point(119, 17);
             this.SetlistId.Name = "SetlistId";
             this.SetlistId.ReadOnly = true;
             this.SetlistId.Size = new System.Drawing.Size(100, 20);
@@ -294,7 +294,7 @@
             // 
             // btnRemoveAll
             // 
-            this.btnRemoveAll.Location = new System.Drawing.Point(291, 246);
+            this.btnRemoveAll.Location = new System.Drawing.Point(292, 269);
             this.btnRemoveAll.Name = "btnRemoveAll";
             this.btnRemoveAll.Size = new System.Drawing.Size(75, 23);
             this.btnRemoveAll.TabIndex = 28;
@@ -304,7 +304,7 @@
             // 
             // btnRemoveSong
             // 
-            this.btnRemoveSong.Location = new System.Drawing.Point(291, 173);
+            this.btnRemoveSong.Location = new System.Drawing.Point(292, 196);
             this.btnRemoveSong.Name = "btnRemoveSong";
             this.btnRemoveSong.Size = new System.Drawing.Size(75, 23);
             this.btnRemoveSong.TabIndex = 29;
@@ -314,7 +314,7 @@
             // 
             // btnAddSong
             // 
-            this.btnAddSong.Location = new System.Drawing.Point(291, 144);
+            this.btnAddSong.Location = new System.Drawing.Point(292, 167);
             this.btnAddSong.Name = "btnAddSong";
             this.btnAddSong.Size = new System.Drawing.Size(75, 23);
             this.btnAddSong.TabIndex = 30;
@@ -324,7 +324,7 @@
             // 
             // btnAddAll
             // 
-            this.btnAddAll.Location = new System.Drawing.Point(291, 217);
+            this.btnAddAll.Location = new System.Drawing.Point(292, 240);
             this.btnAddAll.Name = "btnAddAll";
             this.btnAddAll.Size = new System.Drawing.Size(75, 23);
             this.btnAddAll.TabIndex = 31;
@@ -335,9 +335,9 @@
             // MoveUp
             // 
             this.MoveUp.Image = ((System.Drawing.Image)(resources.GetObject("MoveUp.Image")));
-            this.MoveUp.Location = new System.Drawing.Point(630, 156);
+            this.MoveUp.Location = new System.Drawing.Point(630, 173);
             this.MoveUp.Name = "MoveUp";
-            this.MoveUp.Size = new System.Drawing.Size(25, 40);
+            this.MoveUp.Size = new System.Drawing.Size(25, 25);
             this.MoveUp.TabIndex = 32;
             this.MoveUp.UseVisualStyleBackColor = true;
             this.MoveUp.Click += new System.EventHandler(this.MoveItemUp);
@@ -345,9 +345,9 @@
             // MoveDown
             // 
             this.MoveDown.Image = ((System.Drawing.Image)(resources.GetObject("MoveDown.Image")));
-            this.MoveDown.Location = new System.Drawing.Point(630, 217);
+            this.MoveDown.Location = new System.Drawing.Point(630, 215);
             this.MoveDown.Name = "MoveDown";
-            this.MoveDown.Size = new System.Drawing.Size(25, 40);
+            this.MoveDown.Size = new System.Drawing.Size(25, 25);
             this.MoveDown.TabIndex = 33;
             this.MoveDown.UseVisualStyleBackColor = true;
             this.MoveDown.Click += new System.EventHandler(this.MoveItemDown);
@@ -386,8 +386,10 @@
             this.Controls.Add(this.SetlistSave);
             this.Controls.Add(this.lblSetlistDescription);
             this.Controls.Add(this.lblSetlistTitle);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "SetlistMaintenance";
-            this.Text = "SetlistCreate";
+            this.Text = "Set List Maintenance";
+            this.ResizeBegin += new System.EventHandler(this.RedrawChildren);
             this.Resize += new System.EventHandler(this.RedrawChildren);
             ((System.ComponentModel.ISupportInitialize)(this.ErrorMessages)).EndInit();
             this.ResumeLayout(false);

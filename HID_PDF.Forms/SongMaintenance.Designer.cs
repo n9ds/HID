@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.SongTitle = new System.Windows.Forms.TextBox();
             this.SongArtist = new System.Windows.Forms.TextBox();
             this.SongFilename = new System.Windows.Forms.TextBox();
@@ -49,11 +48,8 @@
             this.Cancel = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.SongId = new System.Windows.Forms.TextBox();
-            this.ErrorMessages = new System.Windows.Forms.DataGridView();
-            this.FieldName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ErrorMessage = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SongDelete = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.ErrorMessages)).BeginInit();
+            this.Libraries = new System.Windows.Forms.ListBox();
             this.SuspendLayout();
             // 
             // SongTitle
@@ -242,7 +238,7 @@
             // 
             // SongSave
             // 
-            this.SongSave.Location = new System.Drawing.Point(116, 273);
+            this.SongSave.Location = new System.Drawing.Point(116, 337);
             this.SongSave.Name = "SongSave";
             this.SongSave.Size = new System.Drawing.Size(75, 23);
             this.SongSave.TabIndex = 9;
@@ -254,7 +250,7 @@
             // 
             this.Cancel.CausesValidation = false;
             this.Cancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.Cancel.Location = new System.Drawing.Point(197, 273);
+            this.Cancel.Location = new System.Drawing.Point(197, 337);
             this.Cancel.Name = "Cancel";
             this.Cancel.Size = new System.Drawing.Size(75, 23);
             this.Cancel.TabIndex = 8;
@@ -279,52 +275,9 @@
             this.SongId.Size = new System.Drawing.Size(100, 20);
             this.SongId.TabIndex = 21;
             // 
-            // ErrorMessages
-            // 
-            this.ErrorMessages.AllowUserToAddRows = false;
-            this.ErrorMessages.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.ErrorMessages.CausesValidation = false;
-            this.ErrorMessages.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
-            this.ErrorMessages.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.ErrorMessages.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.FieldName,
-            this.ErrorMessage});
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.ErrorMessages.DefaultCellStyle = dataGridViewCellStyle1;
-            this.ErrorMessages.Location = new System.Drawing.Point(39, 316);
-            this.ErrorMessages.Name = "ErrorMessages";
-            this.ErrorMessages.ReadOnly = true;
-            this.ErrorMessages.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Sunken;
-            this.ErrorMessages.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.ErrorMessages.Size = new System.Drawing.Size(529, 56);
-            this.ErrorMessages.TabIndex = 22;
-            this.ErrorMessages.Visible = false;
-            // 
-            // FieldName
-            // 
-            this.FieldName.HeaderText = "Field";
-            this.FieldName.Name = "FieldName";
-            this.FieldName.ReadOnly = true;
-            // 
-            // ErrorMessage
-            // 
-            this.ErrorMessage.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.ErrorMessage.HeaderText = "Message";
-            this.ErrorMessage.MinimumWidth = 75;
-            this.ErrorMessage.Name = "ErrorMessage";
-            this.ErrorMessage.ReadOnly = true;
-            this.ErrorMessage.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.ErrorMessage.Width = 75;
-            // 
             // SongDelete
             // 
-            this.SongDelete.Location = new System.Drawing.Point(116, 273);
+            this.SongDelete.Location = new System.Drawing.Point(116, 337);
             this.SongDelete.Name = "SongDelete";
             this.SongDelete.Size = new System.Drawing.Size(75, 23);
             this.SongDelete.TabIndex = 23;
@@ -333,15 +286,25 @@
             this.SongDelete.Visible = false;
             this.SongDelete.Click += new System.EventHandler(this.Delete);
             // 
-            // SongCreateEditDelete
+            // Libraries
+            // 
+            this.Libraries.FormattingEnabled = true;
+            this.Libraries.Location = new System.Drawing.Point(122, 263);
+            this.Libraries.Name = "Libraries";
+            this.Libraries.ScrollAlwaysVisible = true;
+            this.Libraries.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
+            this.Libraries.Size = new System.Drawing.Size(178, 69);
+            this.Libraries.TabIndex = 24;
+            // 
+            // SongMaintenance
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.Cancel;
             this.CausesValidation = false;
             this.ClientSize = new System.Drawing.Size(623, 384);
+            this.Controls.Add(this.Libraries);
             this.Controls.Add(this.SongDelete);
-            this.Controls.Add(this.ErrorMessages);
             this.Controls.Add(this.SongId);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.Cancel);
@@ -362,10 +325,9 @@
             this.Controls.Add(this.SongFilename);
             this.Controls.Add(this.SongArtist);
             this.Controls.Add(this.SongTitle);
-            this.Name = "SongCreateEditDelete";
+            this.Name = "SongMaintenance";
             this.Text = "SongCreate";
             this.Resize += new System.EventHandler(this.RedrawChildren);
-            ((System.ComponentModel.ISupportInitialize)(this.ErrorMessages)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -393,9 +355,7 @@
         private System.Windows.Forms.Button Cancel;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox SongId;
-        private System.Windows.Forms.DataGridView ErrorMessages;
-        private System.Windows.Forms.DataGridViewTextBoxColumn FieldName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ErrorMessage;
         private System.Windows.Forms.Button SongDelete;
+        private System.Windows.Forms.ListBox Libraries;
     }
 }

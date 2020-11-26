@@ -12,7 +12,7 @@ using System.Windows.Forms;
 using HID_PDF;
 using HID_PDF.Data;
 using HID_PDF.Domain;
-using static System.Windows.Forms.ListView;
+using HID_PDF.Infrastructure;
 
 namespace HID_PDF.Forms
 {
@@ -106,12 +106,6 @@ namespace HID_PDF.Forms
             CancelClicked = false;
             if (!IsFormValid)
             {
-                MessageBox.Show("Oops: ");
-                foreach (var errorMsg in Errors)
-                {
-                    ErrorMessages.Rows.Add(new[] { errorMsg.Key, errorMsg.Value });
-                }
-                ErrorMessages.Visible = true;
                 return;
             }
             if (Mode == SongSelect.Modes.Create)
@@ -186,11 +180,20 @@ namespace HID_PDF.Forms
         }
         private bool ValidateForm()
         {
-            // TODO: Iterate through a list of fields.
             // TODO: Make Validation configurable.
-            bool IsFormValid = ValidateSongTextField("LibraryTitle");
-            IsFormValid &= ValidateSongTextField("LibraryDescription");
-            return (IsFormValid);
+            Validation validation = new Validation();
+            List<String> FieldsToValidate = new List<String>();
+            FieldsToValidate.Add("LibraryTitle");
+            FieldsToValidate.Add("LibraryDescription");
+            if (!validation.ValidateForm(this, FieldsToValidate))
+            {
+                validation.ShowErrors();
+                return false;
+            }
+            else
+            {
+                return true;
+            }
         }
 
         private bool ValidateSongTextField(String Fieldname)

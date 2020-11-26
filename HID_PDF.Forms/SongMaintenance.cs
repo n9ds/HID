@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.Entity;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -10,6 +11,7 @@ using System.Windows.Forms;
 using HID_PDF;
 using HID_PDF.Data;
 using HID_PDF.Domain;
+using HID_PDF.Infrastructure;
 
 namespace HID_PDF.Forms
 {
@@ -25,7 +27,7 @@ namespace HID_PDF.Forms
         {
             SongLibrary = new SongLibrary();
             InitializeComponent();
-            Errors = new Dictionary<String, String>();
+            LoadLibraries();
             Song = null;
             Mode = SongSelect.Modes.Create;
         }
@@ -55,23 +57,26 @@ namespace HID_PDF.Forms
             SongInstrument.SelectedItem = Song.Instrument;
             SongFirstNote.SelectedItem = Song.FirstNote;
             FileType.SelectedItem = Song.Filetype;
+            // Select libraries it happens to be in.
+            var Libraries = SongLibrary.Libraries.ToList().Where(s => s.Songs.Contains(Song)).ToList();
+            foreach (var l in Libraries)
+            {
+                this.Libraries.SelectedItem = l.Title;
+            }
+        }
+
+        private void LoadLibraries()
+        {
+            var Libraries = SongLibrary.Libraries.OrderBy(l => l.Title).Select(t => t.Title).ToList();
+            this.Libraries.DataSource = Libraries;
         }
 
         private void Save(object sender, EventArgs e)
         {
-            ErrorMessages.Visible = false;
-            ErrorMessages.Rows.Clear();
             var IsFormValid = ValidateForm();
             CancelClicked = false;
             if (!IsFormValid)
             {
-                MessageBox.Show("Oops: ");
-                //var ErrorText = new StringBuilder();
-                foreach (var errorMsg in Errors)
-                {
-                    ErrorMessages.Rows.Add(new[] { errorMsg.Key, errorMsg.Value });
-                }
-                ErrorMessages.Visible = true;
                 return;
             }
             if (Mode == SongSelect.Modes.Create)
@@ -95,6 +100,24 @@ namespace HID_PDF.Forms
             if (Mode == SongSelect.Modes.Create)
             {
                 SongLibrary.Songs.Add(Song);
+            }
+            // Another place where the small volume makes it not worth while to selectively remove.
+            // Just remove them all and add them back in.
+            foreach (var SItem in this.Libraries.Items)
+            {
+                var Library = SongLibrary.Libraries.Where(t => t.Title == SItem.ToString()).FirstOrDefault();
+                if (Library.Songs.Contains(Song))
+                {
+                    Library.Songs.Remove(Song);
+                }
+            }
+            foreach (var SItem in this.Libraries.SelectedItems)
+            {
+                var Library = SongLibrary.Libraries.Where(t => t.Title == SItem.ToString()).FirstOrDefault();
+                if (!Library.Songs.Contains(Song))
+                {
+                    Library.Songs.Add(Song);
+                }
             }
             SongLibrary.SaveChanges();
             Close();
@@ -136,62 +159,26 @@ namespace HID_PDF.Forms
         }
         private bool ValidateForm()
         {
-            // TODO: Iterate through a list of fields.
             // TODO: Make Validation configurable.
-            bool IsFormValid = ValidateSongTextField("SongTitle");
-            IsFormValid &= ValidateSongTextField("SongArtist");
-            IsFormValid &= ValidateSongTextField("SongFilename");
-            IsFormValid &= ValidateSongListBox("SongInstrument");
-            return ( IsFormValid );
-        }
-        private bool ValidateSongTextField(String Fieldname)
-        {
-            Control TextField = this.Controls.Find(Fieldname, true).FirstOrDefault();
-            if (TextField == null)
+            Validation validation = new Validation();
+            List<String> FieldsToValidate = new List<String>();
+            FieldsToValidate.Add("SongTitle");
+            FieldsToValidate.Add("SongArtist");
+            FieldsToValidate.Add("SongFilename");
+            FieldsToValidate.Add("SongInstrument");
+            if (!validation.ValidateForm(this, FieldsToValidate))
             {
-                throw (new NotImplementedException("Validation  Error: Field " + Fieldname + " does not exist.\n"));
-            }
-            if (CancelClicked || !String.IsNullOrEmpty(((TextBox)TextField).Text))
-            {
-                TextField.BackColor = Color.Empty;
-                Errors.Remove(Fieldname);
-                return true;
+                validation.ShowErrors();
+                return false;
             }
             else
             {
-                TextField.BackColor = Color.Red;
-                Errors.Add(Fieldname, "Cannot be blank");
-                return false;
-            }
-        }
-
-        private bool ValidateSongListBox(String Fieldname)
-        {
-            Control Listbox = this.Controls.Find(Fieldname, true).FirstOrDefault();
-            if (Listbox == null)
-            {
-                throw (new NotImplementedException("Validation  Error: Field " + Fieldname + " does not exist.\n"));
-            }
-            if (CancelClicked || ((ListBox)Listbox).SelectedItems.Count > 0)
-            {
-                Listbox.BackColor = Color.Empty;
-                Errors.Remove(Fieldname);
                 return true;
-            }
-            else
-            {
-                Listbox.BackColor = Color.Red;
-                Errors.Add(Fieldname, "Select an item");
-                return false;
             }
         }
 
         private void RedrawChildren(object sender, EventArgs e)
         {
-            Form form = (Form)sender;
-            Control child = this.ErrorMessages;
-            int ChildBottom = form.Height - 100;
-            child.Height = ChildBottom - child.Top;
         }
     }
 }

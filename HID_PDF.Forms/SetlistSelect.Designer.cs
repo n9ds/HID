@@ -55,6 +55,7 @@
             this.SetlistList.UseCompatibleStateImageBehavior = false;
             this.SetlistList.View = System.Windows.Forms.View.Details;
             this.SetlistList.SelectedIndexChanged += new System.EventHandler(this.EnableButtons);
+            this.SetlistList.DoubleClick += new System.EventHandler(this.OpenSetlist);
             // 
             // Title
             // 
@@ -137,7 +138,7 @@
             this.Controls.Add(this.btnOpenSetlist);
             this.Controls.Add(this.SetlistList);
             this.Name = "SetlistSelect";
-            this.Text = "SetlistSelect";
+            this.Text = "Select a Setlist";
             this.ResumeLayout(false);
 
         }

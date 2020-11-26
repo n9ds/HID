@@ -12,12 +12,13 @@ using HID_PDF.Properties;
 using HID_PDF.Forms;
 using HID_PDF.Data;
 using HID_PDF.Domain;
+using HID_PDF.Infrastructure;
 
 namespace HID_PDF
 {
     public partial class Form1 : Form
     {
-        private FootPedalMonitor FootPedalMonitor;
+        private HIDMonitor FootPedalMonitor;
         private Thread DeviceThread;
         private AxAcroPDFLib.AxAcroPDF axAcroPDF1;
         private delegate void FootPedalNotification(object sender, HIDEventArgs e);
@@ -27,6 +28,7 @@ namespace HID_PDF
         private SetlistSelect SetlistSelectDlg;
         private SetlistShow SetlistShowDlg;
         private LibrarySelect LibrarySelectDlg;
+        private DeviceConfigParms deviceConfigParms;
 
         public enum Modes
         {
@@ -36,13 +38,8 @@ namespace HID_PDF
             Delete
         };
 
-        public event EventHandler<SongSelectedEventArgs> SongSelected;
-
-        private class DeviceConfigParams
-        {
-            public String ConfigFile { get; set; }
-            public String DeviceName { get; set; }
-        }
+        //        public event EventHandler<SongSelectedEventArgs> SongSelected;
+        // TODO: Support for multiple devices?
 
         public Form1()
         {
@@ -51,8 +48,8 @@ namespace HID_PDF
             SongSelectDlg = null;
             SetlistSelectDlg = null;
             LibrarySelectDlg = null;
-            FootPedalMonitor = new FootPedalMonitor();
-            DeviceConfigParams deviceConfigParams = new DeviceConfigParams();
+            FootPedalMonitor = new HIDMonitor();
+            deviceConfigParms = new DeviceConfigParms();
             if (String.IsNullOrEmpty(Properties.Settings.Default.ConfigFile))
             {
                 Properties.Settings.Default.ConfigFile = "DeviceConfig.xml";
@@ -61,13 +58,13 @@ namespace HID_PDF
             {
                 Properties.Settings.Default.DeviceName = "xxUSB NETVISTA FULL WIDTH KEYBOARD";
             }
-            deviceConfigParams.ConfigFile = Properties.Settings.Default.ConfigFile;
-            deviceConfigParams.DeviceName = Properties.Settings.Default.DeviceName;
-            InitializeDevice(deviceConfigParams);
+            deviceConfigParms.ConfigFile = Properties.Settings.Default.ConfigFile;
+            deviceConfigParms.DeviceName = Properties.Settings.Default.DeviceName;
+            InitializeDevice(deviceConfigParms);
             FootPedalMonitor.OnHidDeviceRead += this.HidDeviceRead;
         }
 
-        private void InitializeDevice(DeviceConfigParams deviceConfigParams)
+        private void InitializeDevice(DeviceConfigParms deviceConfigParams)
         {
             FootPedalMonitor.ConfigFile = deviceConfigParams.ConfigFile;
             FootPedalMonitor.DeviceName = deviceConfigParams.DeviceName;
@@ -93,7 +90,7 @@ namespace HID_PDF
             }
         }
 
-
+        // xxTODO: Show what PDF page # (Not possible with axAcroPDF)
         #region "Control Events"
         private void First_Click(object sender, EventArgs e)
         {
@@ -172,7 +169,6 @@ namespace HID_PDF
                 this.ClientSize = new System.Drawing.Size(782, 614);
                 this.axAcroPDF1.Size = new System.Drawing.Size(756, 573);
             }
-
         }
 
         private void OpenPDF_Click(object sender, EventArgs e)
@@ -198,14 +194,37 @@ namespace HID_PDF
 
         private void DeviceSelect(object sender, EventArgs e)
         {
-            DeviceSelect dlg = new DeviceSelect();
+            DeviceSelect dlg = new DeviceSelect(Settings.Default.ConfigFile);
             var rc = dlg.ShowDialog();
             if (rc == DialogResult.OK)
             {
-                var deviceConfigParams = new DeviceConfigParams();
-                deviceConfigParams.ConfigFile = Properties.Settings.Default.ConfigFile;
-                deviceConfigParams.DeviceName = dlg.SelectedDevice;
-                InitializeDevice(deviceConfigParams);
+                deviceConfigParms.ConfigFile = Settings.Default.ConfigFile;
+                deviceConfigParms.DeviceName = dlg.SelectedDevice;
+                InitializeDevice(deviceConfigParms);
+            }
+        }
+
+        private void DeviceConfigure(object sender, EventArgs e)
+        {
+            DeviceConfigure dlg = new DeviceConfigure();
+            dlg.deviceConfigParms = deviceConfigParms;
+            dlg.AttachedDevices = FootPedalMonitor.ListDevices();
+            var rc = dlg.ShowDialog();
+            if (rc == DialogResult.OK)
+            {
+                // TODO: Save the configuration
+            }
+        }
+
+        private void DeviceAdd(object sender, EventArgs e)
+        {
+            var AttachedDevices = FootPedalMonitor.ListDevices();
+            DeviceAdd dlg = new DeviceAdd(AttachedDevices);
+            var rc = dlg.ShowDialog();
+            if (rc == DialogResult.OK)
+            {
+                var SelectedDevice = dlg.SelectedDevice;
+                // TODO: Get the selected device and then show the configure dialog thing.
             }
         }
         #endregion
@@ -292,10 +311,16 @@ namespace HID_PDF
 
         private void Dlg_LibrarySelected(object sender, LibrarySelectedEventArgs e)
         {
-            if (SongSelectDlg == null)
+            // TODO: Show (but not edit) an existing library
+            if (SongSelectDlg == null || SongSelectDlg.IsDisposed)
             {
                 SongSelectDlg = new SongSelect(e.LibraryId);
                 SongSelectDlg.SongSelected += new EventHandler<SongSelectedEventArgs>(Dlg_SongSelected);
+            }
+            else
+            {
+                SongSelectDlg.LibraryId = e.LibraryId;
+                SongSelectDlg.LoadSongList();
             }
             SongSelectDlg.Show();
         }
@@ -308,7 +333,13 @@ namespace HID_PDF
                 OpenSetlist = SetlistShowDlg;
                 SetlistShowDlg.SongSelected += new EventHandler<SongSelectedEventArgs>(Dlg_SongSelected);
             }
+            else
+            {
+                SetlistShowDlg.SetlistId = e.SetlistId;
+                SetlistShowDlg.LoadSetlist();
+            }
             SetlistShowDlg.Show();
+            SetlistShowDlg.BringToFront();
         }
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
@@ -334,12 +365,11 @@ namespace HID_PDF
             {
                 DeviceThread.Abort();
             }
-            //axAcroPDF1.
             this.Close();
         }
 
         #endregion
-        // TODO: Check to make sure modeless dialogs aren't already open.
+
         #region "Other events"
         private void SongSelect(object sender, EventArgs e)
         {
@@ -349,16 +379,50 @@ namespace HID_PDF
                 SongSelectDlg.SongSelected += new EventHandler<SongSelectedEventArgs>(Dlg_SongSelected);
             }
             SongSelectDlg.Show();
+            SongSelectDlg.BringToFront();
         }
 
         private void LibrarySelect (object sender, EventArgs e)
         {
-            if (LibrarySelectDlg == null || SongSelectDlg.IsDisposed)
+            if (LibrarySelectDlg == null || LibrarySelectDlg.IsDisposed)
             {
                 LibrarySelectDlg = new LibrarySelect();
                 LibrarySelectDlg.LibrarySelected += new EventHandler<LibrarySelectedEventArgs>(Dlg_LibrarySelected);
             }
             LibrarySelectDlg.Show();
+            LibrarySelectDlg.BringToFront();
+        }
+
+        private void OpenLibrariesDialog(object sender, EventArgs e)
+        {
+            if (LibrarySelectDlg == null || LibrarySelectDlg.IsDisposed)
+            {
+                LibrarySelectDlg = new LibrarySelect();
+                LibrarySelectDlg.LibrarySelected += new EventHandler<LibrarySelectedEventArgs>(Dlg_LibrarySelected);
+            }
+            LibrarySelectDlg.Show();
+            LibrarySelectDlg.BringToFront();
+        }
+
+        private void OpenSetlistsDialog(object sender, EventArgs e)
+        {
+            if (SetlistSelectDlg == null || SetlistSelectDlg.IsDisposed)
+            {
+                SetlistSelectDlg = new SetlistSelect();
+                SetlistSelectDlg.SetlistSelected += new EventHandler<SetlistSelectedEventArgs>(Dlg_SetlistSelected);
+            }
+            SetlistSelectDlg.Show();
+            SetlistSelectDlg.BringToFront();
+        }
+
+        private void OpenSongsDialog(object sender, EventArgs e)
+        {
+            if (SongSelectDlg == null || SongSelectDlg.IsDisposed)
+            {
+                SongSelectDlg = new SongSelect();
+                SongSelectDlg.SongSelected += new EventHandler<SongSelectedEventArgs>(Dlg_SongSelected);
+            }
+            SongSelectDlg.Show();
         }
 
         private void OpenPDF (String Filename)
@@ -372,29 +436,6 @@ namespace HID_PDF
             DeviceThread.Start();
         }
 
-        private void OpenSongsDialog(object sender, EventArgs e)
-        {
-            if (SongSelectDlg == null || SongSelectDlg.IsDisposed)
-            {
-                SongSelectDlg = new SongSelect();
-                SongSelectDlg.SongSelected += new EventHandler<SongSelectedEventArgs>(Dlg_SongSelected);
-            }
-            SongSelectDlg.Show();
-        }
-
-        private void OpenLibrariesDialog(object sender, EventArgs e)
-        {
-            LibrarySelectDlg = new LibrarySelect();
-            LibrarySelectDlg.LibrarySelected += new EventHandler<LibrarySelectedEventArgs>(Dlg_LibrarySelected);
-            LibrarySelectDlg.Show();
-        }
-
-        private void OpenSetlistsDialog(object sender, EventArgs e)
-        {
-            SetlistSelectDlg = new SetlistSelect();
-            SetlistSelectDlg.SetlistSelected += new EventHandler<SetlistSelectedEventArgs>(Dlg_SetlistSelected);
-            SetlistSelectDlg.Show();
-        }
         #endregion
 
         #region "Deprecated/Not implented yet"

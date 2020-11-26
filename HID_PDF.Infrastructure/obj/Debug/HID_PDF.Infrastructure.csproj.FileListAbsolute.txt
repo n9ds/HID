@@ -1,0 +1,8 @@
+C:\Users\Duston\source\repos\HID\HID_PDF.Infrastructure\obj\Debug\HID_PDF.Infrastructure.csprojAssemblyReference.cache
+C:\Users\Duston\source\repos\HID\HID_PDF.Infrastructure\obj\Debug\HID_PDF.Infrastructure.ErrorDialog.resources
+C:\Users\Duston\source\repos\HID\HID_PDF.Infrastructure\obj\Debug\HID_PDF.Infrastructure.csproj.GenerateResource.cache
+C:\Users\Duston\source\repos\HID\HID_PDF.Infrastructure\obj\Debug\HID_PDF.Infrastructure.csproj.CoreCompileInputs.cache
+C:\Users\Duston\source\repos\HID\HID_PDF.Infrastructure\bin\Debug\HID_PDF.Infrastructure.dll
+C:\Users\Duston\source\repos\HID\HID_PDF.Infrastructure\bin\Debug\HID_PDF.Infrastructure.pdb
+C:\Users\Duston\source\repos\HID\HID_PDF.Infrastructure\obj\Debug\HID_PDF.Infrastructure.dll
+C:\Users\Duston\source\repos\HID\HID_PDF.Infrastructure\obj\Debug\HID_PDF.Infrastructure.pdb

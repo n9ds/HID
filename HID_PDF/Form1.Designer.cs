@@ -44,6 +44,7 @@ namespace HID_PDF
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.selectToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.configureToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.addToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.Help = new System.Windows.Forms.ToolStripMenuItem();
             this.HelpAbout = new System.Windows.Forms.ToolStripMenuItem();
             this.createToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
@@ -132,29 +133,30 @@ namespace HID_PDF
             // Library
             // 
             this.Library.Name = "Library";
-            this.Library.Size = new System.Drawing.Size(55, 20);
-            this.Library.Text = "Library";
+            this.Library.Size = new System.Drawing.Size(64, 20);
+            this.Library.Text = "Library...";
             this.Library.Click += new System.EventHandler(this.OpenLibrariesDialog);
             // 
             // setListToolStripMenuItem
             // 
             this.setListToolStripMenuItem.Name = "setListToolStripMenuItem";
-            this.setListToolStripMenuItem.Size = new System.Drawing.Size(56, 20);
-            this.setListToolStripMenuItem.Text = "Set List";
+            this.setListToolStripMenuItem.Size = new System.Drawing.Size(65, 20);
+            this.setListToolStripMenuItem.Text = "Set List...";
             this.setListToolStripMenuItem.Click += new System.EventHandler(this.OpenSetlistsDialog);
             // 
             // songToolStripMenuItem
             // 
             this.songToolStripMenuItem.Name = "songToolStripMenuItem";
-            this.songToolStripMenuItem.Size = new System.Drawing.Size(46, 20);
-            this.songToolStripMenuItem.Text = "Song";
+            this.songToolStripMenuItem.Size = new System.Drawing.Size(55, 20);
+            this.songToolStripMenuItem.Text = "Song...";
             this.songToolStripMenuItem.Click += new System.EventHandler(this.OpenSongsDialog);
             // 
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.selectToolStripMenuItem,
-            this.configureToolStripMenuItem});
+            this.configureToolStripMenuItem,
+            this.addToolStripMenuItem});
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
             this.toolStripMenuItem1.Size = new System.Drawing.Size(54, 20);
             this.toolStripMenuItem1.Text = "Device";
@@ -162,15 +164,23 @@ namespace HID_PDF
             // selectToolStripMenuItem
             // 
             this.selectToolStripMenuItem.Name = "selectToolStripMenuItem";
-            this.selectToolStripMenuItem.Size = new System.Drawing.Size(127, 22);
+            this.selectToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.selectToolStripMenuItem.Text = "Select";
             this.selectToolStripMenuItem.Click += new System.EventHandler(this.DeviceSelect);
             // 
             // configureToolStripMenuItem
             // 
             this.configureToolStripMenuItem.Name = "configureToolStripMenuItem";
-            this.configureToolStripMenuItem.Size = new System.Drawing.Size(127, 22);
+            this.configureToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.configureToolStripMenuItem.Text = "Configure";
+            this.configureToolStripMenuItem.Click += new System.EventHandler(this.DeviceConfigure);
+            // 
+            // addToolStripMenuItem
+            // 
+            this.addToolStripMenuItem.Name = "addToolStripMenuItem";
+            this.addToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.addToolStripMenuItem.Text = "Add";
+            this.addToolStripMenuItem.Click += new System.EventHandler(this.DeviceAdd);
             // 
             // Help
             // 
@@ -315,6 +325,7 @@ namespace HID_PDF
         private System.Windows.Forms.ToolStripMenuItem songToolStripMenuItem;
         private System.Windows.Forms.Button NextSong;
         private System.Windows.Forms.Button PrevSong;
+        private System.Windows.Forms.ToolStripMenuItem addToolStripMenuItem;
     }
 }
 

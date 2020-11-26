@@ -204,7 +204,7 @@
             this.SongsAvailable.HideSelection = false;
             this.SongsAvailable.Location = new System.Drawing.Point(29, 134);
             this.SongsAvailable.Name = "SongsAvailable";
-            this.SongsAvailable.Size = new System.Drawing.Size(230, 200);
+            this.SongsAvailable.Size = new System.Drawing.Size(295, 200);
             this.SongsAvailable.TabIndex = 24;
             this.SongsAvailable.UseCompatibleStateImageBehavior = false;
             this.SongsAvailable.View = System.Windows.Forms.View.Details;
@@ -212,14 +212,17 @@
             // SongTitle
             // 
             this.SongTitle.Text = "Title";
+            this.SongTitle.Width = 100;
             // 
             // SongArtist
             // 
             this.SongArtist.Text = "Artist";
+            this.SongArtist.Width = 100;
             // 
             // Instrument
             // 
             this.Instrument.Text = "Instrument";
+            this.Instrument.Width = 100;
             // 
             // SongId
             // 
@@ -243,9 +246,9 @@
             this.SelectedSongId});
             this.SongsInLibrary.FullRowSelect = true;
             this.SongsInLibrary.HideSelection = false;
-            this.SongsInLibrary.Location = new System.Drawing.Point(394, 134);
+            this.SongsInLibrary.Location = new System.Drawing.Point(446, 134);
             this.SongsInLibrary.Name = "SongsInLibrary";
-            this.SongsInLibrary.Size = new System.Drawing.Size(230, 200);
+            this.SongsInLibrary.Size = new System.Drawing.Size(295, 200);
             this.SongsInLibrary.TabIndex = 26;
             this.SongsInLibrary.UseCompatibleStateImageBehavior = false;
             this.SongsInLibrary.View = System.Windows.Forms.View.Details;
@@ -253,14 +256,17 @@
             // SelectedTitle
             // 
             this.SelectedTitle.Text = "Title";
+            this.SelectedTitle.Width = 100;
             // 
             // SelectedArtist
             // 
             this.SelectedArtist.Text = "Artist";
+            this.SelectedArtist.Width = 100;
             // 
             // SelectedInstrument
             // 
             this.SelectedInstrument.Text = "Instrument";
+            this.SelectedInstrument.Width = 100;
             // 
             // SelectedSongId
             // 
@@ -277,7 +283,7 @@
             // 
             // btnRemoveAll
             // 
-            this.btnRemoveAll.Location = new System.Drawing.Point(291, 246);
+            this.btnRemoveAll.Location = new System.Drawing.Point(346, 243);
             this.btnRemoveAll.Name = "btnRemoveAll";
             this.btnRemoveAll.Size = new System.Drawing.Size(75, 23);
             this.btnRemoveAll.TabIndex = 28;
@@ -287,7 +293,7 @@
             // 
             // btnRemoveSong
             // 
-            this.btnRemoveSong.Location = new System.Drawing.Point(291, 173);
+            this.btnRemoveSong.Location = new System.Drawing.Point(346, 170);
             this.btnRemoveSong.Name = "btnRemoveSong";
             this.btnRemoveSong.Size = new System.Drawing.Size(75, 23);
             this.btnRemoveSong.TabIndex = 29;
@@ -297,7 +303,7 @@
             // 
             // btnAddSong
             // 
-            this.btnAddSong.Location = new System.Drawing.Point(291, 144);
+            this.btnAddSong.Location = new System.Drawing.Point(346, 141);
             this.btnAddSong.Name = "btnAddSong";
             this.btnAddSong.Size = new System.Drawing.Size(75, 23);
             this.btnAddSong.TabIndex = 30;
@@ -307,7 +313,7 @@
             // 
             // btnAddAll
             // 
-            this.btnAddAll.Location = new System.Drawing.Point(291, 217);
+            this.btnAddAll.Location = new System.Drawing.Point(346, 214);
             this.btnAddAll.Name = "btnAddAll";
             this.btnAddAll.Size = new System.Drawing.Size(75, 23);
             this.btnAddAll.TabIndex = 31;
@@ -315,13 +321,13 @@
             this.btnAddAll.UseVisualStyleBackColor = true;
             this.btnAddAll.Click += new System.EventHandler(this.AddAll);
             // 
-            // LibraryCreateEditDelete
+            // LibraryMaintenance
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.Cancel;
             this.CausesValidation = false;
-            this.ClientSize = new System.Drawing.Size(672, 461);
+            this.ClientSize = new System.Drawing.Size(777, 461);
             this.Controls.Add(this.btnAddAll);
             this.Controls.Add(this.btnAddSong);
             this.Controls.Add(this.btnRemoveSong);
@@ -339,7 +345,7 @@
             this.Controls.Add(this.LibrarySave);
             this.Controls.Add(this.lblLibraryDescription);
             this.Controls.Add(this.lblLibraryTitle);
-            this.Name = "LibraryCreateEditDelete";
+            this.Name = "LibraryMaintenance";
             this.Text = "LibraryCreate";
             this.Resize += new System.EventHandler(this.RedrawChildren);
             ((System.ComponentModel.ISupportInitialize)(this.ErrorMessages)).EndInit();

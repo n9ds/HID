@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "XLJJcB4NbIqSpwnm6/yb6oeNL8ekiBgEEhG7P55gfL9UE3lXbHj4oJWnYoUlabmiLmvYh2GvozAH1tC8g/8YhA==",
+  "dgSpecHash": "EuzxRpLsCmYEIJI9Sg4F745JA/GUf2j6TNCxdkJ09yOX41CziLZTCwzMcXhxN6WS2Iv8j3gLcwJjaWZevUN5Tw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Duston\\source\\repos\\HID\\HID_PDF2.Domain\\HID_PDF.Domain.csproj",
+  "projectFilePath": "C:\\Users\\Duston\\Source\\Repos\\HID\\HID_PDF2.Domain\\HID_PDF.Domain.csproj",
   "expectedPackageFiles": [
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\netstandard.library\\2.0.3\\netstandard.library.2.0.3.nupkg.sha512"

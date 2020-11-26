@@ -62,13 +62,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DeviceSelect.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="DeviceSelect.Designer.cs">
-      <DependentUpon>DeviceSelect.cs</DependentUpon>
-    </Compile>
-    <Compile Include="FootPedalMonitor.cs" />
+    <Compile Include="HIDMonitor.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -94,9 +88,7 @@
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="DeviceSelect.resx">
-      <DependentUpon>DeviceSelect.cs</DependentUpon>
-    </EmbeddedResource>
+    <Compile Include="Settings.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
@@ -120,7 +112,7 @@
     </Compile>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
-      <Generator>SettingsSingleFileGenerator</Generator>
+      <Generator>PublicSettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <Compile Include="Properties\Settings.Designer.cs">
@@ -165,6 +157,10 @@
     <ProjectReference Include="..\HID_PDF.Forms\HID_PDF.Forms.csproj">
       <Project>{3e1f8641-381f-4dc6-8a49-4565aab753f3}</Project>
       <Name>HID_PDF.Forms</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\HID_PDF.Infrastructure\HID_PDF.Infrastructure.csproj">
+      <Project>{81a4b686-522b-47a4-a2e1-36147b2cfe4b}</Project>
+      <Name>HID_PDF.Infrastructure</Name>
     </ProjectReference>
     <ProjectReference Include="..\HID_PDF2.Domain\HID_PDF.Domain.csproj">
       <Project>{48a43536-124e-45c5-a4a9-2ddebc349f50}</Project>

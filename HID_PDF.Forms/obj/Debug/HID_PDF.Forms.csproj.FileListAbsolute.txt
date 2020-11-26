@@ -120,3 +120,12 @@ C:\Users\Duston\source\repos\HID\HID_PDF.Forms\obj\Debug\HID_PDF.Forms.SongMaint
 C:\Users\Duston\source\repos\HID\HID_PDF.Forms\obj\Debug\HID_PDF.Forms.SetlistMaintenance.resources
 C:\Users\Duston\source\repos\HID\HID_PDF.Forms\obj\Debug\HID_PDF.Forms.SetlistSelect.resources
 C:\Users\Duston\source\repos\HID\HID_PDF.Forms\obj\Debug\HID_PDF.Forms.SetlistShow.resources
+C:\Users\Duston\source\repos\HID\HID_PDF.Forms\obj\Debug\HID_PDF.Forms.ErrorDialog.resources
+C:\Users\Duston\source\repos\HID\HID_PDF.Forms\bin\Debug\HID_PDF.Infrastructure.dll
+C:\Users\Duston\source\repos\HID\HID_PDF.Forms\bin\Debug\HID_PDF.Infrastructure.pdb
+C:\Users\Duston\source\repos\HID\HID_PDF.Forms\bin\Debug\HidSharp.dll
+C:\Users\Duston\source\repos\HID\HID_PDF.Forms\bin\Debug\HidSharp.pdb
+C:\Users\Duston\source\repos\HID\HID_PDF.Forms\bin\Debug\HidSharp.xml
+C:\Users\Duston\source\repos\HID\HID_PDF.Forms\obj\Debug\HID_PDF.Forms.DeviceSelect.resources
+C:\Users\Duston\source\repos\HID\HID_PDF.Forms\obj\Debug\HID_PDF.Forms.DeviceAdd.resources
+C:\Users\Duston\source\repos\HID\HID_PDF.Forms\obj\Debug\HID_PDF.Forms.DeviceConfigure.resources

@@ -22,13 +22,12 @@ namespace HID_PDF.Data
         // Add a DbSet for each entity type that you want to include in your model. For more information 
         // on configuring and using a Code First model, see http://go.microsoft.com/fwlink/?LinkId=390109.
 
-        // public virtual DbSet<MyEntity> MyEntities { get; set; }
         public virtual DbSet<Song> Songs { get; set; }
         public virtual DbSet<Library> Libraries { get; set; }
         public virtual DbSet<Setlist> Setlists { get; set; }
         public virtual DbSet<SetlistEntry> SetlistEntries { get; set; }
         public virtual DbSet<Band> Bands { get; set; }
-        // TODO: Add lists of libraries to Song Edit
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Song>()

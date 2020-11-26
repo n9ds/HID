@@ -41,6 +41,9 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="HidSharp, Version=2.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\HidSharp.2.1.0\lib\net35\HidSharp.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
@@ -54,6 +57,30 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DeviceAdd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DeviceAdd.Designer.cs">
+      <DependentUpon>DeviceAdd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DeviceConfigure.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DeviceConfigure.Designer.cs">
+      <DependentUpon>DeviceConfigure.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DeviceSelect.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DeviceSelect.Designer.cs">
+      <DependentUpon>DeviceSelect.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ErrorDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ErrorDialog.Designer.cs">
+      <DependentUpon>ErrorDialog.cs</DependentUpon>
+    </Compile>
     <Compile Include="ListViewGroupComparer.cs" />
     <Compile Include="ListViewItemComparer.cs" />
     <Compile Include="SetlistItemComparer.cs" />
@@ -110,6 +137,18 @@
     <Compile Include="Events\SongSelectedEventArgs.cs" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="DeviceAdd.resx">
+      <DependentUpon>DeviceAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DeviceConfigure.resx">
+      <DependentUpon>DeviceConfigure.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DeviceSelect.resx">
+      <DependentUpon>DeviceSelect.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ErrorDialog.resx">
+      <DependentUpon>ErrorDialog.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="SetlistMaintenance.resx">
       <DependentUpon>SetlistMaintenance.cs</DependentUpon>
     </EmbeddedResource>
@@ -140,6 +179,10 @@
     <ProjectReference Include="..\ClassLibrary1\HID_PDF.Data.csproj">
       <Project>{576590ec-07f8-434e-8478-5b619bea97af}</Project>
       <Name>HID_PDF.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\HID_PDF.Infrastructure\HID_PDF.Infrastructure.csproj">
+      <Project>{81a4b686-522b-47a4-a2e1-36147b2cfe4b}</Project>
+      <Name>HID_PDF.Infrastructure</Name>
     </ProjectReference>
     <ProjectReference Include="..\HID_PDF2.Domain\HID_PDF.Domain.csproj">
       <Project>{48a43536-124e-45c5-a4a9-2ddebc349f50}</Project>

@@ -44,6 +44,7 @@
             this.Key,
             this.First_Note});
             this.listView1.FullRowSelect = true;
+            this.listView1.HideSelection = false;
             this.listView1.Location = new System.Drawing.Point(50, 38);
             this.listView1.MultiSelect = false;
             this.listView1.Name = "listView1";
@@ -56,6 +57,7 @@
             // Title
             // 
             this.Title.Text = "Title";
+            this.Title.Width = 150;
             // 
             // Key
             // 

@@ -55,11 +55,12 @@
             this.LibraryList.UseCompatibleStateImageBehavior = false;
             this.LibraryList.View = System.Windows.Forms.View.Details;
             this.LibraryList.SelectedIndexChanged += new System.EventHandler(this.EnableButtons);
+            this.LibraryList.DoubleClick += new System.EventHandler(this.OpenLibrary);
             // 
             // Title
             // 
             this.Title.Text = "Title";
-            this.Title.Width = 131;
+            this.Title.Width = 169;
             // 
             // Description
             // 

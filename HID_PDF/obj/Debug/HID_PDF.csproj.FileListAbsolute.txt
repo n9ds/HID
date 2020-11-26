@@ -33,7 +33,6 @@ C:\Users\Duston\Source\Repos\HID\HID_PDF\obj\Debug\HID_PDF.csprojAssemblyReferen
 C:\Users\Duston\Source\Repos\HID\HID_PDF\obj\Debug\Interop.AcroPDFLib.dll
 C:\Users\Duston\Source\Repos\HID\HID_PDF\obj\Debug\AxInterop.AcroPDFLib.dll
 C:\Users\Duston\Source\Repos\HID\HID_PDF\obj\Debug\HID_PDF.csproj.ResolveComReference.cache
-C:\Users\Duston\Source\Repos\HID\HID_PDF\obj\Debug\HID_PDF.DeviceSelect.resources
 C:\Users\Duston\Source\Repos\HID\HID_PDF\obj\Debug\HID_PDF.Form1.resources
 C:\Users\Duston\Source\Repos\HID\HID_PDF\obj\Debug\HID_PDF.HelpAbout.resources
 C:\Users\Duston\Source\Repos\HID\HID_PDF\obj\Debug\HID_PDF.Properties.Resources.resources
@@ -153,3 +152,5 @@ C:\Users\Duston\Source\Repos\HID\HID_PDF\bin\Debug\ClassLibrary1.pdb
 C:\Users\Duston\Source\Repos\HID\HID_PDF\bin\Debug\ClassLibrary1.dll.config
 C:\Users\Duston\Source\Repos\HID\HID_PDF\bin\Debug\HID_PDF.Forms.dll.config
 C:\Users\Duston\source\repos\HID\HID_PDF\obj\Debug\HID_PDF.Migrations.AddManytoMany.resources
+C:\Users\Duston\source\repos\HID\HID_PDF\bin\Debug\HID_PDF.Infrastructure.dll
+C:\Users\Duston\source\repos\HID\HID_PDF\bin\Debug\HID_PDF.Infrastructure.pdb
