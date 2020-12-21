@@ -36,7 +36,7 @@
             this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.Listen = new System.Windows.Forms.Button();
-            this.label2 = new System.Windows.Forms.Label();
+            this.lblConfiguredFlag = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // lblDeviceName
@@ -58,6 +58,7 @@
             this.Actions.Size = new System.Drawing.Size(173, 199);
             this.Actions.TabIndex = 1;
             this.Actions.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.DrawItemHandler);
+            this.Actions.SelectedIndexChanged += new System.EventHandler(this.ActionSelected);
             // 
             // label1
             // 
@@ -114,21 +115,21 @@
             this.Listen.Text = "Listen";
             this.Listen.UseVisualStyleBackColor = true;
             // 
-            // label2
+            // lblConfiguredFlag
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(230, 95);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(58, 13);
-            this.label2.TabIndex = 8;
-            this.label2.Text = "Configured";
+            this.lblConfiguredFlag.AutoSize = true;
+            this.lblConfiguredFlag.Location = new System.Drawing.Point(230, 95);
+            this.lblConfiguredFlag.Name = "lblConfiguredFlag";
+            this.lblConfiguredFlag.Size = new System.Drawing.Size(58, 13);
+            this.lblConfiguredFlag.TabIndex = 8;
+            this.lblConfiguredFlag.Text = "Configured";
             // 
             // DeviceConfigure
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(590, 372);
-            this.Controls.Add(this.label2);
+            this.Controls.Add(this.lblConfiguredFlag);
             this.Controls.Add(this.Listen);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.button3);
@@ -155,6 +156,6 @@
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button Listen;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label lblConfiguredFlag;
     }
 }

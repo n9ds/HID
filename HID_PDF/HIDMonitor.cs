@@ -14,8 +14,11 @@ namespace HID_PDF
         private HidStream HIDStream;
         public Boolean HIDStreamOpen;
         public Boolean DeviceFound;
-        public delegate void HidDeviceRead(object device, HIDEventArgs e);
-        public event HidDeviceRead OnHidDeviceRead;
+        // 12/18/2020
+        //public delegate void HidDeviceRead(object device, HIDEventArgs e);
+        //public event HidDeviceRead OnHidDeviceRead;
+        // End 12/18/2020
+        public event EventHandler<HIDEventArgs> OnHidDeviceRead;
         public IDictionary<String, String> MessageTable;
 
         public String ConfigFile { get; set; }
@@ -24,7 +27,6 @@ namespace HID_PDF
         public void Config()
         {
             XmlDocument doc = new XmlDocument();
-
             doc.Load(ConfigFile);
             XmlNodeList nodes = doc.DocumentElement.SelectNodes("/devices/device");
             foreach (XmlNode node in nodes)
@@ -133,7 +135,7 @@ namespace HID_PDF
         {
             Console.WriteLine("(Test) What was read: " + message);
             // Call the callback function
-            if (MessageTable.TryGetValue(message, out String eventMessage))
+            if (MessageTable.TryGetValue(message, out String eventMessage) && OnHidDeviceRead != null)
             {
                 // Send the message here. 
                 OnHidDeviceRead(this, new HIDEventArgs(eventMessage));

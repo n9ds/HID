@@ -61,7 +61,10 @@ namespace HID_PDF
             deviceConfigParms.ConfigFile = Properties.Settings.Default.ConfigFile;
             deviceConfigParms.DeviceName = Properties.Settings.Default.DeviceName;
             InitializeDevice(deviceConfigParms);
-            FootPedalMonitor.OnHidDeviceRead += this.HidDeviceRead;
+            //FootPedalMonitor.OnHidDeviceRead += this.HidDeviceRead;
+            // 12/18/2020
+            //FootPedalMonitor.OnHidDeviceRead += new EventHandler<HIDEventArgs>(HidDeviceRead);
+            FootPedalMonitor.OnHidDeviceRead += HidDeviceRead;
         }
 
         private void InitializeDevice(DeviceConfigParms deviceConfigParams)
@@ -92,6 +95,7 @@ namespace HID_PDF
 
         // xxTODO: Show what PDF page # (Not possible with axAcroPDF)
         #region "Control Events"
+        // TODO: Other actions, like focus to Library/Song dialog, Next Playlist Item, etc.
         private void First_Click(object sender, EventArgs e)
         {
             FootPedalMonitor.SendMessage("00-02-00");

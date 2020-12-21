@@ -53,6 +53,7 @@ namespace HID_PDF.Forms
         {
             LoadConfiguration();
         }
+
         public void LoadConfiguration()
         {
 
@@ -105,6 +106,14 @@ namespace HID_PDF.Forms
                 new Font(FontFamily.GenericSansSerif, 10, FontStyle.Regular), 
                 new SolidBrush((item.Configured ? Color.Red : Color.Green)), 
                 e.Bounds);
+        }
+
+        private void ActionSelected(object sender, EventArgs e)
+        {
+            //  Get the device
+            // Show whether it's configured or not
+            HIDListboxItem device = (HIDListboxItem)Actions.SelectedItem;
+            lblConfiguredFlag.Text = (device.Configured ? "Configured" : "Not Configured");
         }
     }
 }

@@ -27,12 +27,21 @@ namespace HID
             foreach (HidDevice device in attachedHidDevices)
             {
                 Console.WriteLine("Device: " + device.GetFriendlyName());
-                if (device.GetFriendlyName().ToLower().Contains("mifi"))
+                if (device.GetFriendlyName().ToLower().Contains("zd"))
                 {
-                    inData = device.Open();
-                    inData.BeginRead(mouseBuffer, 0, 128, null, null);
-                    string whatRead = BitConverter.ToString(mouseBuffer);
-                    Console.WriteLine("What was read: " + whatRead);
+                    HidSharp.Reports.ReportDescriptor r = device.GetReportDescriptor();
+                    HidStream HIDStream;
+                    int i;
+                    //inData = device.Open();
+                    device.TryOpen(out HIDStream);
+
+                    for (i = 1; i < 30000; i++)
+                    {
+                        // inData.BeginRead(mouseBuffer, 0, 128, null, null);
+                        mouseBuffer = HIDStream.Read();
+                        string whatRead = BitConverter.ToString(mouseBuffer);
+                        Console.WriteLine("What was read: " + whatRead);
+                    }
                 }
             }
         }
