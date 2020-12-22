@@ -83,8 +83,7 @@ namespace HID_PDF
                 toolStripStatusLabel1.Text = FootPedalMonitor.DeviceName;
                 toolStripStatusLabel1.ForeColor = Color.Black;
                 Properties.Settings.Default.DeviceName = FootPedalMonitor.DeviceName;
-                //DeviceThread = new Thread(FootPedalMonitor.Read);
-                //DeviceThread.Start();
+                // Comments removed to see Git branch in action.
             }
             else
             {
