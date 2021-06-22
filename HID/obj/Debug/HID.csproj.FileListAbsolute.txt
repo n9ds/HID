@@ -30,3 +30,4 @@ C:\Users\Duston\Source\Repos\HID\HID\obj\Debug\HID.exe
 C:\Users\Duston\Source\Repos\HID\HID\obj\Debug\HID.pdb
 C:\Users\Duston\source\repos\HID\HID\obj\Debug\HID.Properties.Resources.resources
 C:\Users\Duston\source\repos\HID\HID\obj\Debug\HID.csproj.GenerateResource.cache
+C:\Users\Duston\source\repos\HID\HID\bin\Debug\DeviceConfig.xml

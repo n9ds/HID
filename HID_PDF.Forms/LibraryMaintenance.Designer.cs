@@ -64,7 +64,7 @@
             // LibraryTitle
             // 
             this.LibraryTitle.CausesValidation = false;
-            this.LibraryTitle.Location = new System.Drawing.Point(119, 47);
+            this.LibraryTitle.Location = new System.Drawing.Point(139, 47);
             this.LibraryTitle.Name = "LibraryTitle";
             this.LibraryTitle.Size = new System.Drawing.Size(120, 20);
             this.LibraryTitle.TabIndex = 2;
@@ -72,7 +72,7 @@
             // LibraryDescription
             // 
             this.LibraryDescription.CausesValidation = false;
-            this.LibraryDescription.Location = new System.Drawing.Point(119, 73);
+            this.LibraryDescription.Location = new System.Drawing.Point(139, 73);
             this.LibraryDescription.Name = "LibraryDescription";
             this.LibraryDescription.Size = new System.Drawing.Size(120, 20);
             this.LibraryDescription.TabIndex = 3;
@@ -80,18 +80,20 @@
             // lblLibraryTitle
             // 
             this.lblLibraryTitle.AutoSize = true;
+            this.lblLibraryTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblLibraryTitle.Location = new System.Drawing.Point(81, 50);
             this.lblLibraryTitle.Name = "lblLibraryTitle";
-            this.lblLibraryTitle.Size = new System.Drawing.Size(27, 13);
+            this.lblLibraryTitle.Size = new System.Drawing.Size(34, 16);
             this.lblLibraryTitle.TabIndex = 3;
             this.lblLibraryTitle.Text = "Title";
             // 
             // lblLibraryDescription
             // 
             this.lblLibraryDescription.AutoSize = true;
+            this.lblLibraryDescription.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblLibraryDescription.Location = new System.Drawing.Point(48, 73);
             this.lblLibraryDescription.Name = "lblLibraryDescription";
-            this.lblLibraryDescription.Size = new System.Drawing.Size(60, 13);
+            this.lblLibraryDescription.Size = new System.Drawing.Size(76, 16);
             this.lblLibraryDescription.TabIndex = 4;
             this.lblLibraryDescription.Text = "Description";
             // 
@@ -120,15 +122,16 @@
             // label1
             // 
             this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(92, 24);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(16, 13);
+            this.label1.Size = new System.Drawing.Size(19, 16);
             this.label1.TabIndex = 20;
             this.label1.Text = "Id";
             // 
             // LibraryId
             // 
-            this.LibraryId.Location = new System.Drawing.Point(119, 21);
+            this.LibraryId.Location = new System.Drawing.Point(139, 21);
             this.LibraryId.Name = "LibraryId";
             this.LibraryId.ReadOnly = true;
             this.LibraryId.Size = new System.Drawing.Size(100, 20);
@@ -200,6 +203,7 @@
             this.SongArtist,
             this.Instrument,
             this.SongId});
+            this.SongsAvailable.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SongsAvailable.FullRowSelect = true;
             this.SongsAvailable.HideSelection = false;
             this.SongsAvailable.Location = new System.Drawing.Point(29, 134);
@@ -231,9 +235,10 @@
             // lblSongs
             // 
             this.lblSongs.AutoSize = true;
-            this.lblSongs.Location = new System.Drawing.Point(53, 115);
+            this.lblSongs.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSongs.Location = new System.Drawing.Point(26, 113);
             this.lblSongs.Name = "lblSongs";
-            this.lblSongs.Size = new System.Drawing.Size(83, 13);
+            this.lblSongs.Size = new System.Drawing.Size(107, 16);
             this.lblSongs.TabIndex = 25;
             this.lblSongs.Text = "Songs Available";
             // 
@@ -244,6 +249,7 @@
             this.SelectedArtist,
             this.SelectedInstrument,
             this.SelectedSongId});
+            this.SongsInLibrary.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SongsInLibrary.FullRowSelect = true;
             this.SongsInLibrary.HideSelection = false;
             this.SongsInLibrary.Location = new System.Drawing.Point(446, 134);
@@ -275,9 +281,10 @@
             // lblSongsInLibrary
             // 
             this.lblSongsInLibrary.AutoSize = true;
-            this.lblSongsInLibrary.Location = new System.Drawing.Point(391, 115);
+            this.lblSongsInLibrary.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSongsInLibrary.Location = new System.Drawing.Point(443, 115);
             this.lblSongsInLibrary.Name = "lblSongsInLibrary";
-            this.lblSongsInLibrary.Size = new System.Drawing.Size(82, 13);
+            this.lblSongsInLibrary.Size = new System.Drawing.Size(104, 16);
             this.lblSongsInLibrary.TabIndex = 27;
             this.lblSongsInLibrary.Text = "Songs in Library";
             // 

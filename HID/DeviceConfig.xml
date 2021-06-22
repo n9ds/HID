@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<devices>
+  <device>
+    <friendlyname>Footpedal</friendlyname>
+    <systemname>VEC USB Footpedal</systemname>
+    <messages>
+      <message>
+        <messagevalue>00-00-00</messagevalue>
+        <messageevent>off</messageevent>
+      </message>
+      <message>
+        <messagevalue>00-02-00</messagevalue>
+        <messageevent>next</messageevent>
+      </message>
+      <message>
+        <messagevalue>00-04-00</messagevalue>
+        <messageevent>prev</messageevent>
+      </message>
+    </messages>
+  </device>
+  <device>
+    <friendlyname>Joystick</friendlyname>
+    <systemname>XYZ Acme Brand Joystick Thing</systemname>
+    <messages>
+      <message>
+        <messagevalue>Hello</messagevalue>
+        <messageevent>next</messageevent>
+      </message>
+      <message>
+        <messagevalue>World</messagevalue>
+        <messageevent>prev</messageevent>
+      </message>
+    </messages>
+  </device>
+  <device>
+    <friendlyname>Keyboard</friendlyname>
+    <systemname>USB NETVISTA FULL WIDTH KEYBOARD</systemname>
+    <messages>
+      <message>
+        <messagevalue>Right</messagevalue>
+        <messageevent>next</messageevent>
+      </message>
+      <message>
+        <messagevalue>Left</messagevalue>
+        <messageevent>prev</messageevent>
+      </message>
+    </messages>
+  </device>
+</devices>

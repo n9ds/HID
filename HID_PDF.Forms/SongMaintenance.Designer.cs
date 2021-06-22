@@ -55,30 +55,33 @@
             // SongTitle
             // 
             this.SongTitle.CausesValidation = false;
+            this.SongTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SongTitle.Location = new System.Drawing.Point(121, 66);
             this.SongTitle.Name = "SongTitle";
-            this.SongTitle.Size = new System.Drawing.Size(120, 20);
+            this.SongTitle.Size = new System.Drawing.Size(347, 22);
             this.SongTitle.TabIndex = 2;
             // 
             // SongArtist
             // 
             this.SongArtist.CausesValidation = false;
+            this.SongArtist.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SongArtist.Location = new System.Drawing.Point(121, 92);
             this.SongArtist.Name = "SongArtist";
-            this.SongArtist.Size = new System.Drawing.Size(120, 20);
+            this.SongArtist.Size = new System.Drawing.Size(347, 22);
             this.SongArtist.TabIndex = 3;
             // 
             // SongFilename
             // 
+            this.SongFilename.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SongFilename.Location = new System.Drawing.Point(121, 40);
             this.SongFilename.Name = "SongFilename";
-            this.SongFilename.Size = new System.Drawing.Size(347, 20);
+            this.SongFilename.Size = new System.Drawing.Size(347, 22);
             this.SongFilename.TabIndex = 1;
             // 
             // SongKeyIsMinor
             // 
             this.SongKeyIsMinor.AutoSize = true;
-            this.SongKeyIsMinor.Location = new System.Drawing.Point(248, 152);
+            this.SongKeyIsMinor.Location = new System.Drawing.Point(248, 154);
             this.SongKeyIsMinor.Name = "SongKeyIsMinor";
             this.SongKeyIsMinor.Size = new System.Drawing.Size(52, 17);
             this.SongKeyIsMinor.TabIndex = 5;
@@ -88,51 +91,58 @@
             // lblSongTitle
             // 
             this.lblSongTitle.AutoSize = true;
-            this.lblSongTitle.Location = new System.Drawing.Point(83, 69);
+            this.lblSongTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSongTitle.Location = new System.Drawing.Point(79, 69);
             this.lblSongTitle.Name = "lblSongTitle";
-            this.lblSongTitle.Size = new System.Drawing.Size(27, 13);
+            this.lblSongTitle.Size = new System.Drawing.Size(34, 16);
             this.lblSongTitle.TabIndex = 3;
             this.lblSongTitle.Text = "Title";
             // 
             // lblSongArtist
             // 
             this.lblSongArtist.AutoSize = true;
-            this.lblSongArtist.Location = new System.Drawing.Point(83, 92);
+            this.lblSongArtist.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSongArtist.Location = new System.Drawing.Point(76, 95);
             this.lblSongArtist.Name = "lblSongArtist";
-            this.lblSongArtist.Size = new System.Drawing.Size(30, 13);
+            this.lblSongArtist.Size = new System.Drawing.Size(37, 16);
             this.lblSongArtist.TabIndex = 4;
             this.lblSongArtist.Text = "Artist";
             // 
             // lblSongInstrument
             // 
             this.lblSongInstrument.AutoSize = true;
-            this.lblSongInstrument.Location = new System.Drawing.Point(59, 119);
+            this.lblSongInstrument.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSongInstrument.Location = new System.Drawing.Point(45, 122);
             this.lblSongInstrument.Name = "lblSongInstrument";
-            this.lblSongInstrument.Size = new System.Drawing.Size(56, 13);
+            this.lblSongInstrument.Size = new System.Drawing.Size(68, 16);
             this.lblSongInstrument.TabIndex = 5;
             this.lblSongInstrument.Text = "Instrument";
             // 
             // lblSongKey
             // 
             this.lblSongKey.AutoSize = true;
-            this.lblSongKey.Location = new System.Drawing.Point(85, 152);
+            this.lblSongKey.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSongKey.Location = new System.Drawing.Point(82, 153);
             this.lblSongKey.Name = "lblSongKey";
-            this.lblSongKey.Size = new System.Drawing.Size(25, 13);
+            this.lblSongKey.Size = new System.Drawing.Size(31, 16);
             this.lblSongKey.TabIndex = 6;
             this.lblSongKey.Text = "Key";
             // 
             // lblSongFirstNote
             // 
             this.lblSongFirstNote.AutoSize = true;
-            this.lblSongFirstNote.Location = new System.Drawing.Point(63, 188);
+            this.lblSongFirstNote.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSongFirstNote.Location = new System.Drawing.Point(48, 188);
             this.lblSongFirstNote.Name = "lblSongFirstNote";
-            this.lblSongFirstNote.Size = new System.Drawing.Size(52, 13);
+            this.lblSongFirstNote.Size = new System.Drawing.Size(65, 16);
             this.lblSongFirstNote.TabIndex = 7;
             this.lblSongFirstNote.Text = "First Note";
             // 
             // SongKey
             // 
+            this.SongKey.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SongKey.FormattingEnabled = true;
+            this.SongKey.ItemHeight = 16;
             this.SongKey.Items.AddRange(new object[] {
             "Ab",
             "A",
@@ -150,32 +160,26 @@
             ""});
             this.SongKey.Location = new System.Drawing.Point(122, 152);
             this.SongKey.Name = "SongKey";
-            this.SongKey.Size = new System.Drawing.Size(120, 30);
+            this.SongKey.Size = new System.Drawing.Size(120, 20);
             this.SongKey.TabIndex = 5;
             // 
             // SongInstrument
             // 
+            this.SongInstrument.AllowDrop = true;
             this.SongInstrument.CausesValidation = false;
+            this.SongInstrument.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SongInstrument.FormattingEnabled = true;
-            this.SongInstrument.Items.AddRange(new object[] {
-            "Bass (4 or 6 string)",
-            "Bass (4 string)",
-            "Bass (6 string)",
-            "TSax",
-            "ASax",
-            "Clarinet",
-            "Piano",
-            "Guitar",
-            "Ukulele",
-            "Flute"});
-            this.SongInstrument.Location = new System.Drawing.Point(121, 116);
+            this.SongInstrument.ItemHeight = 16;
+            this.SongInstrument.Location = new System.Drawing.Point(121, 120);
             this.SongInstrument.Name = "SongInstrument";
-            this.SongInstrument.Size = new System.Drawing.Size(120, 30);
+            this.SongInstrument.Size = new System.Drawing.Size(120, 20);
             this.SongInstrument.TabIndex = 4;
             // 
             // SongFirstNote
             // 
+            this.SongFirstNote.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SongFirstNote.FormattingEnabled = true;
+            this.SongFirstNote.ItemHeight = 16;
             this.SongFirstNote.Items.AddRange(new object[] {
             "Ab",
             "A",
@@ -193,15 +197,16 @@
             ""});
             this.SongFirstNote.Location = new System.Drawing.Point(122, 188);
             this.SongFirstNote.Name = "SongFirstNote";
-            this.SongFirstNote.Size = new System.Drawing.Size(120, 30);
+            this.SongFirstNote.Size = new System.Drawing.Size(120, 20);
             this.SongFirstNote.TabIndex = 6;
             // 
             // lblSongFilename
             // 
             this.lblSongFilename.AutoSize = true;
-            this.lblSongFilename.Location = new System.Drawing.Point(64, 41);
+            this.lblSongFilename.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSongFilename.Location = new System.Drawing.Point(46, 41);
             this.lblSongFilename.Name = "lblSongFilename";
-            this.lblSongFilename.Size = new System.Drawing.Size(52, 13);
+            this.lblSongFilename.Size = new System.Drawing.Size(67, 16);
             this.lblSongFilename.TabIndex = 14;
             this.lblSongFilename.Text = "File name";
             // 
@@ -218,22 +223,25 @@
             // lblFileType
             // 
             this.lblFileType.AutoSize = true;
-            this.lblFileType.Location = new System.Drawing.Point(64, 226);
+            this.lblFileType.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblFileType.Location = new System.Drawing.Point(48, 230);
             this.lblFileType.Name = "lblFileType";
-            this.lblFileType.Size = new System.Drawing.Size(50, 13);
+            this.lblFileType.Size = new System.Drawing.Size(65, 16);
             this.lblFileType.TabIndex = 16;
             this.lblFileType.Text = "File Type";
             // 
             // FileType
             // 
+            this.FileType.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FileType.FormattingEnabled = true;
+            this.FileType.ItemHeight = 16;
             this.FileType.Items.AddRange(new object[] {
             "PDF",
             "JPG",
             "PNG"});
             this.FileType.Location = new System.Drawing.Point(122, 226);
             this.FileType.Name = "FileType";
-            this.FileType.Size = new System.Drawing.Size(120, 30);
+            this.FileType.Size = new System.Drawing.Size(120, 20);
             this.FileType.TabIndex = 7;
             // 
             // SongSave
@@ -261,18 +269,20 @@
             // label1
             // 
             this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(94, 19);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(16, 13);
+            this.label1.Size = new System.Drawing.Size(19, 16);
             this.label1.TabIndex = 20;
             this.label1.Text = "Id";
             // 
             // SongId
             // 
+            this.SongId.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SongId.Location = new System.Drawing.Point(121, 12);
             this.SongId.Name = "SongId";
             this.SongId.ReadOnly = true;
-            this.SongId.Size = new System.Drawing.Size(100, 20);
+            this.SongId.Size = new System.Drawing.Size(100, 22);
             this.SongId.TabIndex = 21;
             // 
             // SongDelete
@@ -288,12 +298,14 @@
             // 
             // Libraries
             // 
+            this.Libraries.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Libraries.FormattingEnabled = true;
+            this.Libraries.ItemHeight = 16;
             this.Libraries.Location = new System.Drawing.Point(122, 263);
             this.Libraries.Name = "Libraries";
             this.Libraries.ScrollAlwaysVisible = true;
             this.Libraries.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
-            this.Libraries.Size = new System.Drawing.Size(178, 69);
+            this.Libraries.Size = new System.Drawing.Size(178, 68);
             this.Libraries.TabIndex = 24;
             // 
             // SongMaintenance
@@ -326,7 +338,7 @@
             this.Controls.Add(this.SongArtist);
             this.Controls.Add(this.SongTitle);
             this.Name = "SongMaintenance";
-            this.Text = "SongCreate";
+            this.Text = "Song Maintenance";
             this.Resize += new System.EventHandler(this.RedrawChildren);
             this.ResumeLayout(false);
             this.PerformLayout();

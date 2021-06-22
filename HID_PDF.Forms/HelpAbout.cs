@@ -7,9 +7,9 @@ using System.Reflection;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace HID_PDF
+namespace HID_PDF.Forms
 {
-    partial class HelpAbout : Form
+    public partial class HelpAbout : Form
     {
         public HelpAbout()
         {
@@ -19,7 +19,7 @@ namespace HID_PDF
             this.labelVersion.Text = String.Format("Version {0}", AssemblyVersion);
             this.labelCopyright.Text = AssemblyCopyright;
             this.labelCompanyName.Text = AssemblyCompany;
-            this.textBoxDescription.Text = AssemblyDescription;
+            //this.textBoxDescription.Text = AssemblyDescription;
         }
 
         #region Assembly Attribute Accessors

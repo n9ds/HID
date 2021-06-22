@@ -28,7 +28,6 @@ namespace HID_PDF.Forms
 
         public SongSelect()
         {
-            SongLibrary = new SongLibrary();
             LibraryId = null;
             InitializeComponent();
             LoadSongList();
@@ -44,6 +43,7 @@ namespace HID_PDF.Forms
 
         public void LoadSongList()
         {
+            SongLibrary = new SongLibrary();
             ListViewGroup ListGroup = new ListViewGroup("A");
             String CurrentGroup = "";
             List<Song> Songs;
@@ -53,7 +53,7 @@ namespace HID_PDF.Forms
             }
             else
             {
-                Songs = SongLibrary.Libraries.Where(s => s.Id == LibraryId).
+                Songs = SongLibrary.Libraries.Where(S => S.Id == LibraryId).
                     FirstOrDefault().
                     Songs.
                     OrderBy(S => S.Title).
@@ -62,15 +62,15 @@ namespace HID_PDF.Forms
             ListView songsList = SongList;
             songsList.Items.Clear();
             songsList.Groups.Clear();
-            foreach (Song s in Songs)
+            foreach (Song S in Songs)
             {
-                if (!s.Title.Substring(0,1).Equals(CurrentGroup))
+                if (!S.Title.Substring(0,1).Equals(CurrentGroup))
                 {
-                    CurrentGroup = s.Title.Substring(0, 1);
+                    CurrentGroup = S.Title.Substring(0, 1);
                     ListGroup = new ListViewGroup(CurrentGroup);
                     songsList.Groups.Add(ListGroup);
                 }
-                songsList.Items.Add(new ListViewItem(new[] { s.Title, s.Artist, s.Instrument, s.Id.ToString() }, ListGroup));
+                songsList.Items.Add(new ListViewItem(new[] { S.Title, S.Artist, S.Instrument, S.Id.ToString() }, ListGroup));
             }
         }
 

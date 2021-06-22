@@ -12,8 +12,8 @@ namespace HID_PDF
     {
         private HidDevice HIDDevice;
         private HidStream HIDStream;
-        public Boolean HIDStreamOpen;
-        public Boolean DeviceFound;
+        public Boolean HIDStreamOpen { get; set; }
+        public Boolean DeviceFound { get; set; }
         // 12/18/2020
         //public delegate void HidDeviceRead(object device, HIDEventArgs e);
         //public event HidDeviceRead OnHidDeviceRead;
@@ -23,39 +23,68 @@ namespace HID_PDF
 
         public String ConfigFile { get; set; }
         public String DeviceName { get; set; }
-
+        
         public void Config()
         {
             XmlDocument doc = new XmlDocument();
             doc.Load(ConfigFile);
-            XmlNodeList nodes = doc.DocumentElement.SelectNodes("/devices/device");
-            foreach (XmlNode node in nodes)
+            XmlNode node = doc.SelectSingleNode("/devices/device[systemname = \"" + DeviceName + "\"]");
+            if (node != null)
             {
-                Console.WriteLine("System name: " + node.SelectSingleNode("systemname").InnerText);
-                if (node.SelectSingleNode("systemname").InnerText.Equals(DeviceName))
-                {
-                    ConfigMessages(node.SelectNodes("./messages"));
-                    Setup();
-                }
+                ConfigMessages(node.SelectNodes("./messages"));
+                Setup();
+            }
+            else
+            {
+                throw (new NotImplementedException(DeviceName + " has not been configured for use with this program."));
             }
         }
 
         public void Setup()
         {
-            DeviceFound = false;
             HidDevice device = FindDevice(DeviceName);
             if (device == null)
             {
                 DeviceFound = false;
-                return;
+                HIDStreamOpen = false;
+                HIDDevice = null;
             }
-            DeviceFound = true;
-            HIDStreamOpen = false;
-            HIDDevice = device;
-            if (HIDDevice.TryOpen(out HIDStream))
+            else
             {
-                HIDStream.Closed += this.OnStreamClosed;
-                HIDStreamOpen = (HIDStream != null);
+                DeviceFound = true;
+                HIDStreamOpen = false;
+                HIDDevice = device;
+                if (HIDDevice.TryOpen(out HIDStream))
+                {
+                    HIDStream.Closed += this.OnStreamClosed;
+                    HIDStreamOpen = (HIDStream != null);
+                }
+            }
+            return;
+        }
+
+        private HidDevice FindDevice(String DeviceName)
+        {
+            var device = DeviceList.Local.GetHidDevices().Where(d => d.GetFriendlyName().Equals(DeviceName)).FirstOrDefault();
+            if (device != null)
+            {
+                Console.WriteLine(DeviceName + " found");
+            }
+            else
+            {
+                Console.WriteLine("Could not find " + DeviceName);
+            }
+            return (device);
+        }
+
+        private void ConfigMessages(XmlNodeList nodes)
+        {
+            MessageTable = new Dictionary<String, String>();
+            // TODO: Make sure the messages for the specific device
+            XmlNodeList xmlMessages = nodes.Item(0).SelectNodes("./message");
+            foreach (XmlNode node in xmlMessages)
+            {
+                MessageTable.Add(node.SelectSingleNode("messagevalue").InnerText, node.SelectSingleNode("messageevent").InnerText);
             }
         }
 
@@ -72,36 +101,6 @@ namespace HID_PDF
             return (Devices);
         }
 
-        private HidDevice FindDevice(String DeviceName)
-        {
-            var localList = DeviceList.Local;
-            //IEnumerable<Device> attachedDevices = localList.GetAllDevices();
-            //Console.WriteLine(attachedDevices.Count<Device>() + " found");
-            //foreach (Device device in attachedDevices)
-            //{
-            //    Console.WriteLine("Device: " + device.GetFriendlyName());
-            //}
-            IEnumerable<HidDevice> attachedHidDevices = localList.GetHidDevices();
-            Console.WriteLine(attachedHidDevices.Count<Device>() + " HID found");
-            foreach (HidDevice device in attachedHidDevices)
-            {
-                if (device.GetFriendlyName().ToLower().Equals(DeviceName.ToLower()))
-                {
-                    return (device);
-                }
-            }
-            return (null);
-        }
-
-        public void ConfigMessages(XmlNodeList nodes)
-        {
-            MessageTable = new Dictionary<String, String>();
-            XmlNodeList xmlMessages = nodes.Item(0).SelectNodes("./message");
-            foreach (XmlNode node in xmlMessages)
-            {
-                MessageTable.Add(node.SelectSingleNode("messagevalue").InnerText, node.SelectSingleNode("messageevent").InnerText);
-            }
-        }
 
         public void Read()
         {
@@ -114,14 +113,15 @@ namespace HID_PDF
                 {
                     mouseBuffer = HIDStream.Read();
                     string whatRead = BitConverter.ToString(mouseBuffer);
-                    Console.WriteLine("What was read: " + whatRead);
+                    Console.WriteLine(DeviceName + " read: " + whatRead);
                     SendMessage(whatRead);
                 }
 #pragma warning disable CS0168 // Variable is declared but never used
                 catch (TimeoutException t)
 #pragma warning restore CS0168 // Variable is declared but never used
                 {
-                    // Console.WriteLine("Timeout: " + t.Message);                   
+                    // A timeout is not necessarily a problem.  We don't want to blindly sit and wait for data that may never come, but 
+                    // some devices don't send any data unless there's a button pressed.
                     Console.WriteLine("*");
                 }
                 catch(Exception e)
@@ -144,9 +144,32 @@ namespace HID_PDF
 
         protected virtual void OnStreamClosed(object sender, EventArgs e)
         {
-            Console.WriteLine("Stream closed.");
+            Console.WriteLine(DeviceName + " Stream closed.");
             HIDStream.Closed -= this.OnStreamClosed;
             HIDStreamOpen = false;
         }
     }
+
+    #region "Obsolete or Otherwise Unused"
+    //IEnumerable<HidDevice> attachedHidDevices = DeviceList.Local.GetHidDevices();
+    //var device = attachedHidDevices.Where(d => d.GetFriendlyName().Equals(DeviceName)).FirstOrDefault();
+    //
+    //
+    //var localList = DeviceList.Local;
+    //IEnumerable<HidDevice> attachedHidDevices = localList.GetHidDevices();
+    //IEnumerable<Device> attachedDevices = localList.GetAllDevices();
+    //Console.WriteLine(attachedDevices.Count<Device>() + " found");
+    //foreach (Device device in attachedDevices)
+    //{
+    //    Console.WriteLine("Device: " + device.GetFriendlyName());
+    //}
+    //foreach (HidDevice device in attachedHidDevices)
+    //{
+    //    if (device.GetFriendlyName().ToLower().Equals(DeviceName.ToLower()))
+    //    {
+    //        return (device);
+    //    }
+    //}
+    //return (null);
+    #endregion
 }

@@ -12,7 +12,7 @@ namespace HID_PDF.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "16.7.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "16.8.1.0")]
     public sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
         
         private static Settings defaultInstance = ((Settings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new Settings())));
@@ -73,13 +73,37 @@ namespace HID_PDF.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string DeviceName {
+        [global::System.Configuration.DefaultSettingValueAttribute("0, 0")]
+        public global::System.Drawing.Point LibraryDlgLocation {
             get {
-                return ((string)(this["DeviceName"]));
+                return ((global::System.Drawing.Point)(this["LibraryDlgLocation"]));
             }
             set {
-                this["DeviceName"] = value;
+                this["LibraryDlgLocation"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0, 0")]
+        public global::System.Drawing.Point SetlistShowDlgLocation {
+            get {
+                return ((global::System.Drawing.Point)(this["SetlistShowDlgLocation"]));
+            }
+            set {
+                this["SetlistShowDlgLocation"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0, 0")]
+        public global::System.Drawing.Point SongSelectDlgLocation {
+            get {
+                return ((global::System.Drawing.Point)(this["SongSelectDlgLocation"]));
+            }
+            set {
+                this["SongSelectDlgLocation"] = value;
             }
         }
     }

@@ -42,14 +42,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="HID.exe" size="6656">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="HID.exe" size="10240">
       <assemblyIdentity name="HID" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>v9Ec/V4ExnJfpwHXCRbLyFgVVtihqvnyRTI6BSXJK5I=</dsig:DigestValue>
+        <dsig:DigestValue>6fz51M+XUtMc6L8lHWuw3Kql5gnFmV8YQje81GYmnl8=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -65,6 +65,15 @@
       </hash>
     </dependentAssembly>
   </dependency>
+  <file name="DeviceConfig.xml" size="1401" writeableType="applicationData">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>85zTa+yZvQImtnru5RiqDaXxXk6Vmz7z91XN9aNyPLw=</dsig:DigestValue>
+    </hash>
+  </file>
   <file name="HID.exe.config" size="189">
     <hash>
       <dsig:Transforms>

@@ -1,0 +1,83 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<instruments>
+  <instrument>
+    <name>Bass (4 String)</name>
+    <key>Concert</key>
+  </instrument>
+  <instrument>
+    <name>Bass (5 String)</name>
+    <key>Concert</key>
+  </instrument>
+  <instrument>
+    <name>Bass (6 String)</name>
+    <key>Concert</key>
+  </instrument>
+  <instrument>
+    <name>Bass</name>
+    <key>Concert</key>
+  </instrument>
+  <instrument>
+    <name>Tenor Sax</name>
+    <key>B-Flat</key>
+  </instrument>
+  <instrument>
+    <name>Alto Sax</name>
+    <key>E-flat</key>
+  </instrument>
+  <instrument>
+    <name>Clarinet</name>
+    <key>B-flat</key>
+  </instrument>
+  <instrument>
+    <name>Flute</name>
+    <key>Concert</key>
+  </instrument>
+  <instrument>
+    <name>Guitar (Acoustic)</name>
+    <key>Concert</key>
+  </instrument>
+  <instrument>
+    <name>Guitar (Electric)</name>
+    <key>Concert</key>
+  </instrument>
+  <instrument>
+    <name>Ukulele</name>
+    <key>Concert</key>
+  </instrument>
+  <instrument>
+    <name>Piano</name>
+    <key>Concert</key>
+  </instrument>
+  <instrument>
+    <name>Theramin</name>
+    <key>Concert</key>
+  </instrument>
+  <instrument>
+    <name>Trumpet</name>
+    <key>B-flat</key>
+  </instrument>
+  <instrument>
+    <name>Trombone</name>
+    <key>Concert</key>
+  </instrument>
+  <instrument>
+    <name>Organ</name>
+    <key>Concert</key>
+  </instrument>
+  <instrument>
+    <name>Drum set</name>
+    <key>(None)</key>
+  </instrument>
+  <instrument>
+    <name>Percussion</name>
+    <key>)(None)</key>
+  </instrument>
+  <instrument>
+    <name>Vocal</name>
+    <key>Concert</key>
+  </instrument>
+  <instrument>
+    <name>Flugelhorn</name>
+    <key>B-flat</key>
+  </instrument>
+</instruments>

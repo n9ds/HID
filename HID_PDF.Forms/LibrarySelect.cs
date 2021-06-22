@@ -23,13 +23,13 @@ namespace HID_PDF.Forms
 
         public LibrarySelect()
         {
-            SongLibrary = new SongLibrary();
             InitializeComponent();
             LoadLibraryList();
         }
 
         private void LoadLibraryList()
         {
+            SongLibrary = new SongLibrary();
             ListViewGroup ListGroup = new ListViewGroup("A");
             String CurrentGroup = "";
             List<Library> Libraries = SongLibrary.Libraries.OrderBy(S => S.Title).ToList();
@@ -113,6 +113,18 @@ namespace HID_PDF.Forms
             btnOpenLibrary.Enabled = enableButtons;
             btnEditLibrary.Enabled = enableButtons;
             btnDeleteLibrary.Enabled = enableButtons;
+        }
+
+        private void LibraryClosing(object sender, FormClosingEventArgs e)
+        {
+        // Save the location of this dialog.
+        //        Settings.Default.WindowLocation = this.Location;
+        //        FootPedalMonitor.HIDStreamOpen = false;
+        //        // Copy window size to app settings
+        //        if (this.WindowState == FormWindowState.Normal)
+        //        {
+        //            Settings.Default.WindowSize = this.Size;
+        //        }
         }
     }
 }

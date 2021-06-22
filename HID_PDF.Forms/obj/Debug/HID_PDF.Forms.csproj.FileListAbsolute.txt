@@ -129,3 +129,4 @@ C:\Users\Duston\source\repos\HID\HID_PDF.Forms\bin\Debug\HidSharp.xml
 C:\Users\Duston\source\repos\HID\HID_PDF.Forms\obj\Debug\HID_PDF.Forms.DeviceSelect.resources
 C:\Users\Duston\source\repos\HID\HID_PDF.Forms\obj\Debug\HID_PDF.Forms.DeviceAdd.resources
 C:\Users\Duston\source\repos\HID\HID_PDF.Forms\obj\Debug\HID_PDF.Forms.DeviceConfigure.resources
+C:\Users\Duston\source\repos\HID\HID_PDF.Forms\obj\Debug\HID_PDF.Forms.HelpAbout.resources

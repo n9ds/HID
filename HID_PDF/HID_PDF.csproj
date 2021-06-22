@@ -32,7 +32,7 @@
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
+    <PlatformTarget>x86</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -84,12 +84,6 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="HelpAbout.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="HelpAbout.Designer.cs">
-      <DependentUpon>HelpAbout.cs</DependentUpon>
-    </Compile>
     <Compile Include="HIDEventArgs.cs" />
     <Compile Include="IInputMonitor.cs" />
     <Compile Include="Migrations\202005081625229_Initial.cs" />
@@ -106,9 +100,6 @@
     <Compile Include="Settings.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="HelpAbout.resx">
-      <DependentUpon>HelpAbout.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202005081625229_Initial.resx">
       <DependentUpon>202005081625229_Initial.cs</DependentUpon>
@@ -161,6 +152,9 @@
   <ItemGroup>
     <Content Include="DeviceConfig.xml">
       <SubType>Designer</SubType>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="InstrumentConfig.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

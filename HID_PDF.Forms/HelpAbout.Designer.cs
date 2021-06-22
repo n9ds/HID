@@ -1,4 +1,4 @@
-﻿namespace HID_PDF
+﻿namespace HID_PDF.Forms
 {
     partial class HelpAbout
     {
@@ -127,7 +127,7 @@
             this.labelCopyright.Name = "labelCopyright";
             this.labelCopyright.Size = new System.Drawing.Size(271, 17);
             this.labelCopyright.TabIndex = 21;
-            this.labelCopyright.Text = "Copyright 2019";
+            this.labelCopyright.Text = "Copyright 2021";
             this.labelCopyright.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // labelCompanyName

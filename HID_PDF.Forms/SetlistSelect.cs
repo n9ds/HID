@@ -23,13 +23,13 @@ namespace HID_PDF.Forms
 
         public SetlistSelect()
         {
-            SongLibrary = new SongLibrary();
             InitializeComponent();
             LoadSetlistList();
         }
 
         private void LoadSetlistList()
         {
+            SongLibrary = new SongLibrary();
             ListViewGroup ListGroup = new ListViewGroup("A");
             String CurrentGroup = "";
             List<Setlist> Setlists = SongLibrary.Setlists.OrderBy(S => S.Band).ThenBy(S => S.Title).ToList();
@@ -82,7 +82,7 @@ namespace HID_PDF.Forms
             var lastSubItem = SetlistList.SelectedItems[0].SubItems.Count - 1;
             var SetlistId = int.Parse(SetlistList.SelectedItems[0].SubItems[lastSubItem].Text);
             Setlist setlist = SongLibrary.Setlists.Where(l => l.Id == SetlistId).FirstOrDefault();
-            var rc = MessageBox.Show("Are you sure you want to delete the library '" + setlist.Title + "'?", "Delete Setlist", MessageBoxButtons.YesNoCancel);
+            var rc = MessageBox.Show("Are you sure you want to delete the setlist '" + setlist.Title + "'?", "Delete Setlist", MessageBoxButtons.YesNoCancel);
             if (rc == DialogResult.Yes)
             {
                 foreach (var entry in setlist.SetlistEntries.ToList())

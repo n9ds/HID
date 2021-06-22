@@ -3,6 +3,7 @@
   <device>
     <friendlyname>Footpedal</friendlyname>
     <systemname>VEC USB Footpedal</systemname>
+    <enabled>true</enabled>
     <messages>
       <message>
         <messagevalue>00-00-00</messagevalue>
@@ -20,7 +21,8 @@
   </device>
   <device>
     <friendlyname>Joystick</friendlyname>
-    <systemname>XYZ Acme Brand Joystick Thing</systemname>
+    <systemname>Controller (ZD Game For Windows)</systemname>
+    <enabled>true</enabled>
     <messages>
       <message>
         <messagevalue>Hello</messagevalue>

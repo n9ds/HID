@@ -77,18 +77,20 @@
             // lblSetlistTitle
             // 
             this.lblSetlistTitle.AutoSize = true;
-            this.lblSetlistTitle.Location = new System.Drawing.Point(86, 50);
+            this.lblSetlistTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSetlistTitle.Location = new System.Drawing.Point(69, 51);
             this.lblSetlistTitle.Name = "lblSetlistTitle";
-            this.lblSetlistTitle.Size = new System.Drawing.Size(27, 13);
+            this.lblSetlistTitle.Size = new System.Drawing.Size(34, 16);
             this.lblSetlistTitle.TabIndex = 3;
             this.lblSetlistTitle.Text = "Title";
             // 
             // lblSetlistDescription
             // 
             this.lblSetlistDescription.AutoSize = true;
-            this.lblSetlistDescription.Location = new System.Drawing.Point(81, 76);
+            this.lblSetlistDescription.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSetlistDescription.Location = new System.Drawing.Point(63, 76);
             this.lblSetlistDescription.Name = "lblSetlistDescription";
-            this.lblSetlistDescription.Size = new System.Drawing.Size(32, 13);
+            this.lblSetlistDescription.Size = new System.Drawing.Size(40, 16);
             this.lblSetlistDescription.TabIndex = 4;
             this.lblSetlistDescription.Text = "Band";
             // 
@@ -117,9 +119,10 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(92, 24);
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(84, 17);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(16, 13);
+            this.label1.Size = new System.Drawing.Size(19, 16);
             this.label1.TabIndex = 20;
             this.label1.Text = "Id";
             // 
@@ -199,6 +202,7 @@
             this.Instrument,
             this.SongId,
             this.SetOrder});
+            this.SongsAvailable.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SongsAvailable.FullRowSelect = true;
             this.SongsAvailable.HideSelection = false;
             this.SongsAvailable.Location = new System.Drawing.Point(29, 134);
@@ -235,9 +239,10 @@
             // lblSongs
             // 
             this.lblSongs.AutoSize = true;
-            this.lblSongs.Location = new System.Drawing.Point(53, 115);
+            this.lblSongs.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSongs.Location = new System.Drawing.Point(35, 109);
             this.lblSongs.Name = "lblSongs";
-            this.lblSongs.Size = new System.Drawing.Size(83, 13);
+            this.lblSongs.Size = new System.Drawing.Size(107, 16);
             this.lblSongs.TabIndex = 25;
             this.lblSongs.Text = "Songs Available";
             // 
@@ -250,6 +255,7 @@
             this.SelectedInstrument,
             this.SelectedSongId,
             this.SelectedSetOrder});
+            this.SongsInSetlist.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SongsInSetlist.FullRowSelect = true;
             this.SongsInSetlist.HideSelection = false;
             this.SongsInSetlist.Location = new System.Drawing.Point(394, 134);
@@ -286,9 +292,10 @@
             // lblSongsInSetlist
             // 
             this.lblSongsInSetlist.AutoSize = true;
-            this.lblSongsInSetlist.Location = new System.Drawing.Point(391, 115);
+            this.lblSongsInSetlist.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSongsInSetlist.Location = new System.Drawing.Point(403, 109);
             this.lblSongsInSetlist.Name = "lblSongsInSetlist";
-            this.lblSongsInSetlist.Size = new System.Drawing.Size(79, 13);
+            this.lblSongsInSetlist.Size = new System.Drawing.Size(99, 16);
             this.lblSongsInSetlist.TabIndex = 27;
             this.lblSongsInSetlist.Text = "Songs in Setlist";
             // 

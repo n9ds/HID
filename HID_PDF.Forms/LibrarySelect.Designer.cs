@@ -45,6 +45,7 @@
             this.Title,
             this.Description,
             this.LibraryId});
+            this.LibraryList.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LibraryList.FullRowSelect = true;
             this.LibraryList.HideSelection = false;
             this.LibraryList.Location = new System.Drawing.Point(35, 35);
@@ -138,7 +139,8 @@
             this.Controls.Add(this.btnOpenLibrary);
             this.Controls.Add(this.LibraryList);
             this.Name = "LibrarySelect";
-            this.Text = "LibrarySelect";
+            this.Text = "Select a Library";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.LibraryClosing);
             this.ResumeLayout(false);
 
         }

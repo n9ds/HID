@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml;
 using HID_PDF;
 using HID_PDF.Data;
 using HID_PDF.Domain;
@@ -28,6 +29,7 @@ namespace HID_PDF.Forms
             SongLibrary = new SongLibrary();
             InitializeComponent();
             LoadLibraries();
+            LoadInstruments();
             Song = null;
             Mode = SongSelect.Modes.Create;
         }
@@ -59,9 +61,9 @@ namespace HID_PDF.Forms
             FileType.SelectedItem = Song.Filetype;
             // Select libraries it happens to be in.
             var Libraries = SongLibrary.Libraries.ToList().Where(s => s.Songs.Contains(Song)).ToList();
-            foreach (var l in Libraries)
+            foreach (var Library in Libraries)
             {
-                this.Libraries.SelectedItem = l.Title;
+                this.Libraries.SelectedItem = Library.Title;
             }
         }
 
@@ -71,6 +73,16 @@ namespace HID_PDF.Forms
             this.Libraries.DataSource = Libraries;
         }
 
+        private void LoadInstruments()
+        {
+            XmlDocument doc = new XmlDocument();
+            doc.Load("instrumentconfig.xml");
+            var Instruments = doc.SelectNodes("/instruments/instrument");
+            foreach (XmlNode Instrument in Instruments)
+            {
+                SongInstrument.Items.Add(Instrument.SelectSingleNode("name").InnerText);
+            }
+        }
         private void Save(object sender, EventArgs e)
         {
             var IsFormValid = ValidateForm();

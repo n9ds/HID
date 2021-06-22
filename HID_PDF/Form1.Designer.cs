@@ -135,7 +135,7 @@ namespace HID_PDF
             this.Library.Name = "Library";
             this.Library.Size = new System.Drawing.Size(64, 20);
             this.Library.Text = "Library...";
-            this.Library.Click += new System.EventHandler(this.OpenLibrariesDialog);
+            this.Library.Click += new System.EventHandler(this.LibrarySelect);
             // 
             // setListToolStripMenuItem
             // 
@@ -149,7 +149,7 @@ namespace HID_PDF
             this.songToolStripMenuItem.Name = "songToolStripMenuItem";
             this.songToolStripMenuItem.Size = new System.Drawing.Size(55, 20);
             this.songToolStripMenuItem.Text = "Song...";
-            this.songToolStripMenuItem.Click += new System.EventHandler(this.OpenSongsDialog);
+            this.songToolStripMenuItem.Click += new System.EventHandler(this.SongSelect);
             // 
             // toolStripMenuItem1
             // 

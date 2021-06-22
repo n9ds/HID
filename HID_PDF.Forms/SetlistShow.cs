@@ -32,7 +32,6 @@ namespace HID_PDF.Forms
         public SetlistShow(int SetlistId)
         {
             InitializeComponent();
-            SongLibrary = new SongLibrary();
             this.SetlistId = SetlistId;
             if (SetlistId > 0)
             {
@@ -42,6 +41,7 @@ namespace HID_PDF.Forms
 
         public void LoadSetlist()
         {
+            SongLibrary = new SongLibrary();
             Setlist setlist = SongLibrary.Setlists
                 .Include("SetlistEntries.Song")
                 .Where(S => S.Id == SetlistId).FirstOrDefault();
@@ -49,7 +49,8 @@ namespace HID_PDF.Forms
             {
                 throw (new NotImplementedException());
             }
-            List<SetlistEntry> Set = setlist.SetlistEntries.ToList().OrderBy(s => s.SetOrder).ToList();
+            this.Text = setlist.Title + " (" + setlist.Band + ")";
+            List < SetlistEntry> Set = setlist.SetlistEntries.ToList().OrderBy(s => s.SetOrder).ToList();
             foreach (SetlistEntry sl in Set)
             {
                 Song s = sl.Song;
